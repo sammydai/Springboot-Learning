@@ -1,0 +1,24 @@
+
+server:
+  port: 8989
+  servlet:
+    context-path: /demo
+spring:
+  security:
+    user:
+      name: sammy
+      password: 123456
+management:
+  server:
+    port: 8980
+    servlet:
+      context-path: /sys
+  endpoint:
+    health:
+      show-details: always
+
+  # 设置端点暴露的哪些内容，默认["health","info"]，设置"*"代表暴露所有可访问的端点
+  endpoints:
+    web:
+      exposure:
+        include: '*'
