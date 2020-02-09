@@ -16,6 +16,9 @@
       <module>springboot-log-aop</module>
       <module>springboot-actuator</module>
       <module>springboot-exception-handler</module>
+      <module>springboot-task</module>
+      <module>springboot-task-quartz</module>
+      <module>springboot-cache-ehcache</module>
   </modules>
 
   <properties>
