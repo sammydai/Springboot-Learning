@@ -19,6 +19,7 @@
       <module>springboot-task</module>
       <module>springboot-task-quartz</module>
       <module>springboot-cache-ehcache</module>
+      <module>springboot-file-upload</module>
   </modules>
 
   <properties>
