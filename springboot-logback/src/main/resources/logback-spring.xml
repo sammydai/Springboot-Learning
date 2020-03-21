@@ -94,13 +94,31 @@
     -->
     <!--
     3 带有多个loger的配置，指定级别，指定appender
-    
+
     -->
-    <logger name="com.dwt.springbootlogback" level="INFO" additivity="false">
+
+    <!--这种情况下，日志文件里的日志会打印两遍
+        因为先会打印logger中的appender日志
+        activiti默认true即向上传递到root
+        root接收到日志信息，会继续打印到文件中
+        console日志会打印一遍，因为会传递到root中
+    -->
+    <!--<logger name="com.dwt.springbootlogback">-->
+        <!--<appender-ref ref="FILE_INFO"/>-->
+        <!--<appender-ref ref="FILE_ERROR"/>-->
+    <!--</logger>-->
+
+
+    <!--是当前logger对象的祖先对象（所有祖先）的logger相关联的appender日志格式。因此：同一个appender对象绑定到多个logger
+对象上，就会造成日志输出多份。-->
+    <!-- root 是root logger 本质还是logger
+        一个日志信息能不能输出，主要看有没有吐出到appender中 -->
+    <!-- 一个logger 看它所属的appender到底是谁，就能判断是否多次输出 -->
+
+    <logger name="com.dwt.springbootlogback" additivity="false">
         <appender-ref ref="FILE_INFO"/>
         <appender-ref ref="FILE_ERROR"/>
     </logger>
-
 
 
     <root level="info">

@@ -1,6 +1,7 @@
 package com.dwt.springbootasync.task;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 
@@ -16,16 +17,19 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class TaskFactory {
 
+	@Async
 	public Future<Boolean> asyncTask1() throws InterruptedException {
 		doTask("asyncTask1",5);
 		return new AsyncResult<>(Boolean.TRUE);
 	}
 
+	@Async
 	public Future<Boolean> asyncTask2() throws InterruptedException {
 		doTask("asyncTask2",2);
 		return new AsyncResult<>(Boolean.TRUE);
 	}
 
+	@Async
 	public Future<Boolean> asyncTask3() throws InterruptedException {
 		doTask("asyncTask3",3);
 		return new AsyncResult<>(Boolean.TRUE);
