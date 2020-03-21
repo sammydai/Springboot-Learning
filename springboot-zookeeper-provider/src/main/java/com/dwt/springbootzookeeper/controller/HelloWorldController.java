@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloWorldController {
+
     @GetMapping("/helloworld")
     public String HelloWorld() {
-        return "Hello World! HAHAHA";
+        return "【This is ZK Provider Msg】: Hello World!";
     }
 }
 

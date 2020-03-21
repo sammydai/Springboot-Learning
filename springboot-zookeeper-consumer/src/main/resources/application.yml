@@ -7,7 +7,9 @@ spring:
     zookeeper:
       discovery:
         enabled: true
+#        root: /testconsumer
       connect-string: localhost:2181
 logging:
   level:
     org.apache.zookeeper.ClientCnxn: WARN
+    com.dwt.springbootzookeeperconsumer: INFO
