@@ -13,7 +13,7 @@
 	<packaging>jar</packaging>
 
 	<name>springboot-zookeeper-consumer</name>
-	<description>Demo project for Spring Boot zookeeper-consumer</description>
+	<description>Demo project for Spring Boot Zookeeper Consumer</description>
 
 	<properties>
 		<java.version>1.8</java.version>

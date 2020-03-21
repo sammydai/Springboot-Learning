@@ -8,12 +8,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>springboot-zookeeper</artifactId>
+    <artifactId>springboot-zookeeper-provider</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>springboot-zookeeper</name>
-    <description>Demo project for Spring Boot Zookeeper</description>
+    <name>springboot-zookeeper-provider</name>
+    <description>Demo project for Spring Boot Zookeeper Provider</description>
 
     <properties>
         <java.version>1.8</java.version>

@@ -20,7 +20,7 @@
         <module>springboot-task-quartz</module>
         <module>springboot-cache-ehcache</module>
         <module>springboot-file-upload</module>
-        <module>springboot-zookeeper</module>
+        <module>springboot-zookeeper-provider</module>
         <module>springboot-zookeeper-consumer</module>
     </modules>
 

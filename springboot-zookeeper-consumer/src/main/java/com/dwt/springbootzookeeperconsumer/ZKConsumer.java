@@ -8,10 +8,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-public class ConsumerStarter {
+public class ZKConsumer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConsumerStarter.class, args);
+		SpringApplication.run(ZKConsumer.class, args);
 	}
 
 }
