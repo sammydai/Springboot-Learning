@@ -1,0 +1,13 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: Consumer
+  cloud:
+    zookeeper:
+      discovery:
+        enabled: true
+      connect-string: localhost:2181
+logging:
+  level:
+    org.apache.zookeeper.ClientCnxn: WARN
