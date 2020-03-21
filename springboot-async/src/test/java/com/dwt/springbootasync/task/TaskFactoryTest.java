@@ -1,6 +1,6 @@
 package com.dwt.springbootasync.task;
 
-import com.dwt.springbootasync.SpringbootAsyncApplicationTests;
+import com.dwt.springbootasync.SpringbootAsyncApplicationTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.concurrent.Future;
  * @Time: 2020/2/8 01:08
  */
 @Slf4j
-public class TaskFactoryTest extends SpringbootAsyncApplicationTests {
+public class TaskFactoryTest extends SpringbootAsyncApplicationTest {
 
 	@Autowired
 	private TaskFactory task;
