@@ -22,12 +22,14 @@
         <module>springboot-file-upload</module>
         <module>springboot-zookeeper-provider</module>
         <module>springboot-zookeeper-consumer</module>
+        <module>springboot-datasource-test</module>
+        <module>springboot-datasource-multi-test</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <spring.boot.version>2.1.0.RELEASE</spring.boot.version>
         <hutool.version>5.0.0</hutool.version>
         <guava.version>28.1-jre</guava.version>
