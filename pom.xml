@@ -28,6 +28,7 @@
         <module>springboot-datasource-druid-mysql</module>
         <module>springboot-transaction-manager</module>
         <module>springboot-anotation</module>
+        <module>springboot-jpa</module>
     </modules>
 
     <properties>
