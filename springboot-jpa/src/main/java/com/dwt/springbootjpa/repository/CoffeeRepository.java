@@ -13,6 +13,4 @@ import java.util.List;
  */
 
 public interface CoffeeRepository extends BaseRepository<Coffee,Long> {
-	List<CoffeeOrder> findByCustomerOrderById(String customer);
-    List<CoffeeOrder> findByItems_Name(String name);
 }

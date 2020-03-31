@@ -2,7 +2,7 @@ server:
   port: 9002
 spring:
   application:
-    name: Consumer
+    name: HelloConsumer
   cloud:
     zookeeper:
       discovery:
@@ -12,4 +12,4 @@ spring:
 logging:
   level:
     org.apache.zookeeper.ClientCnxn: WARN
-    com.dwt.springbootzookeeperconsumer: INFO
+    com.dwt.springbootzookeeperconsumer: info

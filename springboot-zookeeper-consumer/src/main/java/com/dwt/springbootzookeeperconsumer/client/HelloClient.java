@@ -1,7 +1,9 @@
 package com.dwt.springbootzookeeperconsumer.client;
 
+import com.dwt.springbootzookeeperconsumer.config.FeignClientConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * @Package: com.dwt.springbootzookeeperconsumer.client
@@ -22,9 +24,9 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 
 
-@FeignClient("HelloWorldProvider")
+@FeignClient(value = "HelloWorldProvider",configuration = FeignClientConfig.class)
 public interface HelloClient {
 
-	@GetMapping("/helloworld")
-	public String hhhtest();
+	@GetMapping("/helloworld/provider/{name}")
+	public String hhhtest(@PathVariable("name") String name);
 }

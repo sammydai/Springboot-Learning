@@ -9,7 +9,7 @@ spring:
       connect-string: localhost:2181
 
 server:
-  port: 8081
+  port: 8099
 endpoints:
   restart:
     enabled: true
