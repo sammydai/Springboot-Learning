@@ -34,7 +34,7 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 日志归档 -->
             <!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间-->
-            <fileNamePattern>./logs/springboot-logback/info.created_on_%d{yyyy-MM-dd}.part_%i.log</fileNamePattern>
+            <fileNamePattern>./logs/app-logback/info.created_on_%d{yyyy-MM-dd}.part_%i.log</fileNamePattern>
             <!--日志文件保留天数,只保留最近15天的日志-->
             <maxHistory>15</maxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -58,7 +58,7 @@
         <!--滚动策略，按照时间滚动 TimeBasedRollingPolicy-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间-->
-            <FileNamePattern>./logs/springboot-logback/error.created_on_%d{yyyy-MM-dd}.part_%i.log</FileNamePattern>
+            <FileNamePattern>./logs/app-logback/error.created_on_%d{yyyy-MM-dd}.part_%i.log</FileNamePattern>
             <!--只保留最近90天的日志-->
             <maxHistory>90</maxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -115,10 +115,10 @@
         一个日志信息能不能输出，主要看有没有吐出到appender中 -->
     <!-- 一个logger 看它所属的appender到底是谁，就能判断是否多次输出 -->
 
-    <logger name="com.dwt.springbootlogback" additivity="true">
-        <!--<appender-ref ref="FILE_INFO"/>-->
-        <!--<appender-ref ref="FILE_ERROR"/>-->
-    </logger>
+    <!--<logger name="com.dwt.springboothello" additivity="true">-->
+        <!--&lt;!&ndash;<appender-ref ref="FILE_INFO"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<appender-ref ref="FILE_ERROR"/>&ndash;&gt;-->
+    <!--</logger>-->
 
 
     <root level="info">
