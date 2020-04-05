@@ -62,6 +62,7 @@ public class ZooLockAspect {
 		}
 		String lockKey = buildLockKey(zooLock, method, args);
 		InterProcessMutex lock = new InterProcessMutex(zkClient, lockKey);
+
 		try {
 			if (lock.acquire(zooLock.timeout(), zooLock.timeUnit())) {
 				return point.proceed();
