@@ -29,6 +29,7 @@
         <module>springboot-transaction-manager</module>
         <module>springboot-anotation</module>
         <module>springboot-jpa</module>
+        <module>springboot-jvm</module>
     </modules>
 
     <properties>
