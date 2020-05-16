@@ -30,6 +30,8 @@
         <module>springboot-anotation</module>
         <module>springboot-jpa</module>
         <module>springboot-jvm</module>
+        <module>springboot-rabbitmq</module>
+        <module>springboot-redis</module>
     </modules>
 
     <properties>
