@@ -1,6 +1,7 @@
 package com.dwt.redis.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -18,12 +19,13 @@ import java.util.concurrent.TimeUnit;
 public class RedisUtils {
 
 	@Autowired
-	private RedisTemplate<String,Object> redisTemplate;
+	private RedisTemplate<String, Object> redisTemplate;
 
 	// =============================common============================
 
 	/**
 	 * 指定缓存失效时间
+	 *
 	 * @param key
 	 * @param time
 	 * @return
@@ -42,6 +44,7 @@ public class RedisUtils {
 
 	/**
 	 * 指定缓存失效时间
+	 *
 	 * @param key not null
 	 * @return 时间(秒) 返回0代表为永久有效
 	 */
@@ -72,6 +75,7 @@ public class RedisUtils {
 
 	/**
 	 * 普通缓存获取
+	 *
 	 * @param key
 	 * @return
 	 */
@@ -81,6 +85,7 @@ public class RedisUtils {
 
 	/**
 	 * 普通缓存放入
+	 *
 	 * @param key
 	 * @param value
 	 * @return
@@ -97,12 +102,13 @@ public class RedisUtils {
 
 	/**
 	 * 普通缓存放入并设置时间
+	 *
 	 * @param key
 	 * @param value
 	 * @param time
 	 * @return
 	 */
-	public boolean set(String key, Object value,long time) {
+	public boolean set(String key, Object value, long time) {
 		try {
 			if (time > 0) {
 				redisTemplate.opsForValue().set(key, value, time);
@@ -123,6 +129,27 @@ public class RedisUtils {
 		return redisTemplate.opsForValue().increment(key, delta);
 	}
 
+	/**
+     * 递减
+     * @param key 键
+     * @return
+     */
+    public long decr(String key, long delta){
+        if(delta<0){
+            throw new RuntimeException("递减因子必须大于0");
+        }
+        return redisTemplate.opsForValue().increment(key, -delta);
+    }
+
+	// ================================Map=================================
+
+	public void hmSet(String key, Object hashKey, Object value) {
+
+		HashOperations<String, Object, Object> hash = redisTemplate.opsForHash();
+
+		hash.put(key, hashKey, value);
+
+	}
 }
 
 
