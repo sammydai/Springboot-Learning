@@ -119,19 +119,19 @@ public class RabbitMqConfig {
      * 延迟队列
      */
     @Bean
-	public Queue delayQueue() {
-		return new Queue(RabbitConsts.DELAY_QUEUE, true);
-	}
+    public Queue delayQueue() {
+        return new Queue(RabbitConsts.DELAY_QUEUE, true);
+    }
 
 	/**
      * 延迟队列交换器, x-delayed-type 和 x-delayed-message 固定
      */
 	@Bean
-	public CustomExchange delayExchange() {
-    	Map<String, Object> args = Maps.newHashMap();
+    public CustomExchange delayExchange() {
+        Map<String, Object> args = Maps.newHashMap();
         args.put("x-delayed-type", "direct");
-		return new CustomExchange(RabbitConsts.DELAY_QUEUE, "x-delayed-message", true, false, args);
-	}
+        return new CustomExchange(RabbitConsts.DELAY_MODE_QUEUE, "x-delayed-message", true, false, args);
+    }
 
     /**
      * 延迟队列绑定自定义交换器

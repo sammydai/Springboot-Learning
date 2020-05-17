@@ -9,9 +9,4 @@ spring:
     username: guest
     password: guest
     virtual-host: /test
-    # 手动提交消息
-    listener:
-      simple:
-        acknowledge-mode: manual
-      direct:
-        acknowledge-mode: manual
+    publisher-confirms: true
