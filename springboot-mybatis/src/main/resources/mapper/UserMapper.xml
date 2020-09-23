@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dwt.springbootmybatis.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.dwt.springbootmybatis.domain.User">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
+        <result column="dept" jdbcType="VARCHAR" property="dept" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="createtime" jdbcType="DATE" property="createtime" />
+    </resultMap>
+
+    <!--场景1：parameterType 简单类型String-->
+    <!-- SELECT * FROM user WHERE dept LIKE '%${dept}%' 用$方式会有sql注入危险-->
+    <!-- SELECT * FROM user WHERE dept LIKE "%"#{dept}"%" 用#占位符方式-->
+    <select id="getUserByDept" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT * FROM user WHERE dept LIKE "%"#{dept}"%"
+    </select>
+
+    <!--场景2：parameterType 复杂数据类型 类和Map-->
+
+
+
+    <select id="getUser" resultType="com.dwt.springbootmybatis.domain.User">
+        select * from user where id = #{id}
+    </select>
+
+    <!--返回List<User> 必须用resultMap类型 -->
+    <select id="getUserList" resultMap="BaseResultMap">
+        select id,age,address,username,dept,createtime from user
+    </select>
+
+    <resultMap id="DeptResultMap" type="com.dwt.springbootmybatis.domain.DeptUserObject">
+        <id column="id" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="address" jdbcType="VARCHAR" property="address" />
+        <result column="dept" jdbcType="VARCHAR" property="dept" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="createtime" jdbcType="DATE" property="createtime" />
+
+        <association property="department" javaType="com.dwt.springbootmybatis.domain.Dept">
+            <id column="dept_id" property="deptId"/>
+            <result column="dept_name" property="deptName"/>
+            <result column="dept_location" property="deptLocation"/>
+            <result column="dept_manager" property="deptManager"/>
+            <result column="dept_description" property="deptDescription"/>
+        </association>
+
+    </resultMap>
+    <!--一对一关联查询，1个user对应1个dept-->
+    <!--步骤1：创建extendObject对象，继承【主加载对象】user，创建dept对象属性
+        步骤2：创建resultMap主标签，创建association子标签（一对一子标签）
+        步骤3：association子标签 property属性是extendObject对象中的名称
+              association子标签 javaType属性是对应关联【子加载对象】的类全名-->
+    <select id="getUserDept" resultMap="DeptResultMap">
+       SELECT u.*, d.dept_name,d.dept_manager,d.dept_description,d.dept_location,d.dept_id FROM
+        `user` AS u  LEFT JOIN dept AS d
+       ON u.dept = d.dept_name
+    </select>
+
+    <resultMap id="DeptExtResultMap" type="com.dwt.springbootmybatis.domain.DeptExtObject">
+        <id column="dept_id" property="deptId"/>
+        <result column="dept_name" property="deptName"/>
+        <result column="dept_location" property="deptLocation"/>
+        <result column="dept_manager" property="deptManager"/>
+        <result column="dept_description" property="deptDescription"/>
+        <collection property="userList" ofType="com.dwt.springbootmybatis.domain.User">
+            <id column="id" property="id"/>
+            <result column="username" jdbcType="VARCHAR" property="username" />
+            <result column="address" jdbcType="VARCHAR" property="address" />
+            <result column="dept" jdbcType="VARCHAR" property="dept" />
+            <result column="age" jdbcType="INTEGER" property="age" />
+            <result column="createtime" jdbcType="DATE" property="createtime" />
+        </collection>
+    </resultMap>
+
+    <!--一对多联合查询 1个user对应多个dept-->
+    <!--注意主加载对象和子加载对象id值不要设置相同，否则查询结果只有一条-->
+    <!--column属性值不能有空格等，必须和db中的column完全一致-->
+    <!--步骤1：创建extendObject对象，继承【主加载对象】dept，创建List<User>对象属性
+        步骤2：创建resultMap主标签，创建collection子标签（一对对子标签）
+        步骤3：property属性是extendObject对象中的List名称
+        ofType属性是List容器中对象的类型-->
+    <select id="getDeptFullInfo" resultMap="DeptExtResultMap">
+        SELECT  d.* ,u.* FROM
+        dept AS d , `user` AS u
+        WHERE d.dept_name = u.dept
+    </select>
+
+</mapper>
+
