@@ -33,6 +33,7 @@
         <module>springboot-rabbitmq</module>
         <module>springboot-rabbitmq-advanced</module>
         <module>springboot-redis</module>
+        <module>springboot-mybatis</module>
     </modules>
 
     <properties>
