@@ -5,8 +5,12 @@ package com.dwt;
  */
 public class Demo6 {
 	public static void main(String[] args) {
-		String a = "abc";
-		String b = new String("abc");
-		System.out.println("a==b result:"+(a==b));
+		Result result = new Demo6().checkPW();
+		System.out.println(result);
+
+	}
+
+	private Result checkPW(){
+		return Result.ofSuccess(CheckEnums.COMPLEY_PASSWD.getRespMsg());
 	}
 }
