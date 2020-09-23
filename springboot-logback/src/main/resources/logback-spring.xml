@@ -87,13 +87,13 @@
     当执行logback.LogbackDemo类的main方法时，root将级别为“INFO”及大于“INFO”的日志信息交给已经配置好的名为“STDOUT”的appender处理，“STDOUT”appender将信息打印到控制台；
     -->
     <!--
-    2 带有loger的配置，不指定级别，不指定appender，
+    2 带有logger的配置，不指定级别，不指定appender，
     没有设置addtivity，默认为true，将此loger的打印信息向上级传递；
     没有设置appender，此loger本身不打印任何信息。
     当执行logback.LogbackDemo类的main方法时，因为LogbackDemo 在包logback中，所以首先执行<logger name="logback" />，将级别为“DEBUG”及大于“DEBUG”的日志信息传递给root，本身并不打印；
     -->
     <!--
-    3 带有多个loger的配置，指定级别，指定appender
+    3 带有多个logger的配置，指定级别，指定appender
 
     -->
 
@@ -116,15 +116,15 @@
     <!-- 一个logger 看它所属的appender到底是谁，就能判断是否多次输出 -->
 
     <logger name="com.dwt.springbootlogback" additivity="true">
-        <!--<appender-ref ref="FILE_INFO"/>-->
-        <!--<appender-ref ref="FILE_ERROR"/>-->
+        <appender-ref ref="FILE_INFO"/>
+        <appender-ref ref="FILE_ERROR"/>
     </logger>
 
 
     <root level="info">
         <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="FILE_INFO"/>
-        <appender-ref ref="FILE_ERROR"/>
+        <!--<appender-ref ref="FILE_INFO"/>-->
+        <!--<appender-ref ref="FILE_ERROR"/>-->
     </root>
 
 </configuration>
