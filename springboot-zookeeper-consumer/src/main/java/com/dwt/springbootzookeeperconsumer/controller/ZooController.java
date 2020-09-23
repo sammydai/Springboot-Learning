@@ -62,6 +62,7 @@ public class ZooController {
         if (instances != null && instances.size() > 0 ) {
             sb.append(instances.get(0).getUri()+",");
         }
+
         return "hello world  "+sb.toString();
 	}
 

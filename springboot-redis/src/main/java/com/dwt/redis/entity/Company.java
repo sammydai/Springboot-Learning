@@ -1,5 +1,6 @@
 package com.dwt.redis.entity;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -31,6 +32,7 @@ public class Company implements Serializable{
 
 	public void setLabel(Integer label) {
 		this.label = label;
+IOException
 	}
 
 	@Override
