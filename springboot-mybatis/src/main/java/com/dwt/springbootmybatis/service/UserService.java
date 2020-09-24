@@ -2,11 +2,13 @@ package com.dwt.springbootmybatis.service;
 
 import com.dwt.springbootmybatis.domain.DeptExtObject;
 import com.dwt.springbootmybatis.domain.DeptUserObject;
+import com.dwt.springbootmybatis.domain.QueryVO;
 import com.dwt.springbootmybatis.domain.User;
 import com.dwt.springbootmybatis.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,7 +18,7 @@ import java.util.List;
  * @Date: 2020/9/23 10:10
  */
 @Service
-public class UserService {
+public class UserService{
 
 	@Autowired
 	private UserMapper userMapper;
@@ -45,5 +47,17 @@ public class UserService {
 		List<DeptExtObject> deptFullInfo = userMapper.getDeptFullInfo();
 		return deptFullInfo;
 	}
+
+	public int insertUser() {
+		User user = new User("tomcat",22,"usa","it",new Date());
+		int i = userMapper.insertUser(user);
+		return i;
+	}
+
+	public List<User> getUserByName(QueryVO queryVO) {
+		List<User> userByName = userMapper.getUserByName(queryVO);
+		return userByName;
+	}
+
 
 }

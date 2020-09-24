@@ -2,10 +2,12 @@ package com.dwt.springbootmybatis.controller;
 
 import com.dwt.springbootmybatis.domain.DeptExtObject;
 import com.dwt.springbootmybatis.domain.DeptUserObject;
+import com.dwt.springbootmybatis.domain.QueryVO;
 import com.dwt.springbootmybatis.domain.User;
 import com.dwt.springbootmybatis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -52,5 +54,22 @@ public class UserController {
 	public List<DeptExtObject> queryDept() {
 		List<DeptExtObject> deptFullInfo = userService.getDeptFullInfo();
 		return deptFullInfo;
+	}
+
+	@RequestMapping("/insertuser")
+	public int insertUser(){
+		int i = userService.insertUser();
+		return i;
+	}
+
+	@RequestMapping("/user/name/{username}")
+	public List<User> queryUserByName(@PathVariable String username) {
+		System.out.println(">>>>>>>username"+username);
+		QueryVO queryVO = new QueryVO();
+		User user = new User();
+		user.setUsername(username);
+		queryVO.setUser(user);
+		List<User> userByName = userService.getUserByName(queryVO);
+		return userByName;
 	}
 }

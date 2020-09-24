@@ -15,6 +15,6 @@ logging:
   level:
     com:
       dwt:
-        springbootmybatis:
-          mapper: debug
+        springbootmybatis: debug
+#          mapper: debug
 

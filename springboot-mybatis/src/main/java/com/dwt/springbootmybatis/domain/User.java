@@ -1,5 +1,6 @@
 package com.dwt.springbootmybatis.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,12 +10,37 @@ import java.util.Date;
  * @Date: 2020/9/23 10:04
  */
 
-public class User {
+public class User implements Serializable {
+
+	private static final long serialVersionUID = 8537611339806053830L;
 	private Integer id;
 	private String username;
 	private Integer age;
 	private String address;
 	private String dept;
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", username='" + username + '\'' +
+				", age=" + age +
+				", address='" + address + '\'' +
+				", dept='" + dept + '\'' +
+				", createtime=" + createtime +
+				'}';
+	}
+
+	public User() {
+	}
+
+	public User(String username, Integer age, String address, String dept, Date createtime) {
+		this.username = username;
+		this.age = age;
+		this.address = address;
+		this.dept = dept;
+		this.createtime = createtime;
+	}
 
 	public Date getCreatetime() {
 		return createtime;
@@ -25,8 +51,6 @@ public class User {
 	}
 
 	private Date createtime;
-
-
 
 	public Integer getId() {
 		return id;
