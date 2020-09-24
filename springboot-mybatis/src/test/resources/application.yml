@@ -11,10 +11,12 @@ mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
   configuration:
     cache-enabled: true
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
 logging:
   level:
     com:
       dwt:
-        springbootmybatis: debug
-#          mapper: debug
+        springbootmybatis:
+          mapper: debug
 

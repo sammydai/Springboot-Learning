@@ -27,4 +27,6 @@ public interface UserMapper {
 
 	public List<DeptExtObject> getDeptFullInfo();
 
+	public List<DeptUserObject> getUserDeptLazy();
+
 }

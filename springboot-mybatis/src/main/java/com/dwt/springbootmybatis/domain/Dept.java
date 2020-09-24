@@ -53,4 +53,15 @@ public class Dept {
 	public void setDeptId(Integer deptId) {
 		this.deptId = deptId;
 	}
+
+	@Override
+	public String toString() {
+		return "Dept{" +
+				"deptId=" + deptId +
+				", deptName='" + deptName + '\'' +
+				", deptLocation='" + deptLocation + '\'' +
+				", deptDescription='" + deptDescription + '\'' +
+				", deptManager='" + deptManager + '\'' +
+				'}';
+	}
 }

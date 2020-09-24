@@ -72,4 +72,15 @@ public class UserController {
 		List<User> userByName = userService.getUserByName(queryVO);
 		return userByName;
 	}
+
+	@RequestMapping("/test")
+	public void testCache() {
+		userService.testCache();
+	}
+
+	@RequestMapping("/test1")
+	public List<DeptUserObject> getUserDeptLazy() {
+		List<DeptUserObject> userDeptLazy = userService.getUserDeptLazy();
+		return userDeptLazy;
+	}
 }

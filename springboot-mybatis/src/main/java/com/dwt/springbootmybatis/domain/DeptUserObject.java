@@ -17,4 +17,11 @@ public class DeptUserObject extends User {
 	public void setDepartment(Dept department) {
 		this.department = department;
 	}
+
+	@Override
+	public String toString() {
+		return "DeptUserObject{" +
+				"department=" + department +
+				'}';
+	}
 }

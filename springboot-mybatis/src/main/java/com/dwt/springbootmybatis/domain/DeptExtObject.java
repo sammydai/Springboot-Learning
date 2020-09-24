@@ -21,4 +21,11 @@ public class DeptExtObject extends Dept{
 	public void setUserList(List<User> userList) {
 		this.userList = userList;
 	}
+
+	@Override
+	public String toString() {
+		return "DeptExtObject{" +
+				"userList=" + userList +
+				'}';
+	}
 }

@@ -7,6 +7,7 @@ import com.dwt.springbootmybatis.domain.User;
 import com.dwt.springbootmybatis.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
@@ -59,5 +60,18 @@ public class UserService{
 		return userByName;
 	}
 
+	@Transactional
+	public void testCache() {
+		System.out.println("========>第1次执行");
+		User user = userMapper.getUser(2);
+		System.out.println(user);
+		System.out.println("========>第2次执行");
+		User user1 = userMapper.getUser(2);
+		System.out.println(user1);
+	}
 
+	public List<DeptUserObject> getUserDeptLazy() {
+		List<DeptUserObject> userDeptLazy = userMapper.getUserDeptLazy();
+		return userDeptLazy;
+	}
 }

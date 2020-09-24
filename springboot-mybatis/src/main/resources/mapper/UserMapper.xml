@@ -56,7 +56,6 @@
             <result column="dept_manager" property="deptManager"/>
             <result column="dept_description" property="deptDescription"/>
         </association>
-
     </resultMap>
     <!--一对一关联查询，1个user对应1个dept-->
     <!--步骤1：创建extendObject对象，继承【主加载对象】user，创建dept对象属性
@@ -97,6 +96,7 @@
         dept AS d , `user` AS u
         WHERE d.dept_name = u.dept
     </select>
+
 
 </mapper>
 
