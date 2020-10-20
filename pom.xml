@@ -34,6 +34,9 @@
         <module>springboot-rabbitmq-advanced</module>
         <module>springboot-redis</module>
         <module>springboot-mybatis</module>
+        <module>springboot-jwt</module>
+        <module>springboot-io</module>
+
     </modules>
 
     <properties>
