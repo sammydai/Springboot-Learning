@@ -39,6 +39,7 @@ public class SpringbootHelloworldApplication {
 
 	private static void serializeFlyPig() throws IOException {
         Person kkss = new Person("kkss",28,"teacher");
+        // kkss.hashCode()
         // ObjectOutputStream 对象输出流，将 flyPig 对象存储到E盘的 flyPig.txt 文件中，完成对 flyPig 对象的序列化操作
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File("/Users/daiwenting/Documents/lua/Person.txt")));
         oos.writeObject(kkss);

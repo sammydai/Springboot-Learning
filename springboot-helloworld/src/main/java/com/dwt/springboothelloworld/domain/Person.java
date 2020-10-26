@@ -1,6 +1,7 @@
 package com.dwt.springboothelloworld.domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * @Package: com.dwt.springboothelloworld.domain
@@ -36,6 +37,22 @@ public class Person implements Serializable {
 		this.job = job;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Person person = (Person) o;
+		return age == person.age &&
+				Objects.equals(name, person.name) &&
+				Objects.equals(job, person.job) &&
+				Objects.equals(address, person.address);
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(name, age, job, address);
+	}
 
 	@Override
 	public String toString() {

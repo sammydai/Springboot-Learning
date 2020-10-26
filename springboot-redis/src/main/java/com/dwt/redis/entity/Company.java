@@ -32,7 +32,6 @@ public class Company implements Serializable{
 
 	public void setLabel(Integer label) {
 		this.label = label;
-IOException
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.dwt;
 
+import java.security.Key;
 import java.util.*;
 
 /**
@@ -51,14 +52,140 @@ public class JContainerTest {
 		map.put(1, "Java");
 		map.put(2, "C++");
 		map.put(3, "PHP");
+		/**
+		// 1 迭代器 EntrySet map.entrySet遍历
 		Iterator<Map.Entry<Integer, String>> iterator = map.entrySet().iterator();
 		while (iterator.hasNext()) {
 			Map.Entry<Integer, String> entry = iterator.next();
 			System.out.println(entry.getKey()+"--"+entry.getValue());
 		}
+		**/
+
+		/**
+		// 2 迭代器 KeySet map.keySet遍历
+		Iterator<Integer> iterator1 = map.keySet().iterator();
+		while (iterator1.hasNext()) {
+			Integer key = iterator1.next();
+			System.out.println(key+"--"+map.get(key));
+		}
+		**/
+
+		/**
+		// 3 foreach keySet
+		for (Integer key : map.keySet()) {
+			System.out.println(key+"-->"+map.get(key));
+		}**/
+
+		/**
+		// 4 foreach EntrySet
+		for (Map.Entry<Integer, String> mm1 : map.entrySet()) {
+			System.out.println(mm1.getKey()+"对应--》"+mm1.getValue());
+		}
+		 **/
+
+		/**
+		// 5 lamda
+		map.forEach((key,value)->{
+			System.out.println(key);
+			System.out.println(value);
+		});
+		 **/
+
+		/**
+		// 6 Streams API 单线程
+		map.entrySet().stream().forEach((entry)->{
+			System.out.println(entry.getKey());
+			System.out.println();
+		});
+		 **/
+
+		//7 Streams API多线程
+		// map.entrySet().parallelStream().forEach((entry -> {
+		// 	System.out.println(entry.getKey());
+		// 	System.out.println("-->"+entry.getValue());
+		// }));
+
+		// List<String> list = new ArrayList<>();
+		// list.add("1");
+		// list.add("2");
+		// for (String ss : list) {
+		// 	if ("2".equals(ss)) {
+		// 		list.remove(ss);
+		// 	}
+		// }
+		// System.out.println(list);
+		// Iterator<String> iterator = list.iterator();
+		// while (iterator.hasNext()) {
+		// 	String ss = iterator.next();
+		// 	if (ss.equals("2")){
+		// 		iterator.remove();
+		// 	}
+		// }
+
+		List<String> list = new ArrayList<>();
+        list.add("wupx");
+        list.add("love");
+        list.add("huxy");
+        for (String temp : list) {
+            if ("wupx".equals(temp)) {
+                list.remove(temp);
+            }
+        }
+        System.out.println(list);
+	}
+
+	public void compareSetObject(){
+		HashSet set1 = new HashSet();
+        set1.add("1");
+        set1.add("1");
+
+		for (Object a : set1) {
+            System.out.println(a);
+        }
+
+        HashSet set2 = new HashSet();
+        Person p1 = new Person("1");
+        Person p2 = new Person("1");
+        set2.add(p1);
+        set2.add(p2);
+
+
+         for (Object a : set2) {
+            System.out.println(a);
+        }
+
+		System.out.println("p1hashcode "+p1.hashCode());
+		System.out.println("p2hashcode "+p2.hashCode());
+		System.out.println("p1 equals p2 "+p1.equals(p2));
 	}
 
 }
+
+class Person {
+        private String age;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Person person = (Person) o;
+		return Objects.equals(age, person.age);
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(age);
+	}
+
+	Person(String age) {
+            this.age = age;
+        }
+        @Override
+        public String toString() {
+            return "Person{" + "age='" + age + '\'' + '}';
+        }
+    }
 
 class Student implements Comparable{
 	private int age;
