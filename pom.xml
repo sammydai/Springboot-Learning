@@ -29,7 +29,7 @@
         <module>springboot-transaction-manager</module>
         <module>springboot-anotation</module>
         <module>springboot-jpa</module>
-        <module>springboot-jvm</module>
+        <module>springboot-juc</module>
         <module>springboot-rabbitmq</module>
         <module>springboot-rabbitmq-advanced</module>
         <module>springboot-redis</module>
