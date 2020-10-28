@@ -36,6 +36,8 @@
         <module>springboot-mybatis</module>
         <module>springboot-jwt</module>
         <module>springboot-io</module>
+        <module>springboot-job-core</module>
+        <module>springboot-jvm8</module>
 
     </modules>
 

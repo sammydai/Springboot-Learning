@@ -1,4 +1,4 @@
-package com.dwt.springbootlogaop;
+package com.dwt.jvm8;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
