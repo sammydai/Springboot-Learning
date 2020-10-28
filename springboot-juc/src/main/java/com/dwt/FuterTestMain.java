@@ -12,32 +12,100 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 
 public class FuterTestMain {
-	public static void main(String[] args) {
-		ExecutorService service = Executors.newCachedThreadPool();
-		// Future<Integer> result = service.submit(new FutureTest());
-		FutureTask<Integer> futureTask = new FutureTask<>(new FutureTest());
-		service.submit(futureTask);
-		service.shutdown();
-		try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e1) {
-            e1.printStackTrace();
-        }
+	public static void main(String[] args) throws ExecutionException, InterruptedException {
+		FutureTask<String> sft2 = new FutureTask<>(new T2Task());
+		FutureTask<String> sft1 = new FutureTask<>(new T1Task(sft2));
+		ExecutorService service = Executors.newFixedThreadPool(2);
+		service.submit(sft1);
+		service.submit(sft2);
+		System.out.println(sft1.get());
+	}
+}
 
-        System.out.println("主线程在执行任务");
+class Task implements Runnable{
 
-		try {
-            if(futureTask.get()!=null){
-                System.out.println("task运行结果"+futureTask.get());
-            }else{
-                System.out.println("未获取到结果");
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+	Result result;
 
-        System.out.println("所有任务执行完毕");
+	public Task(Result result) {
+		this.result = result;
+	}
+
+	@Override
+	public void run() {
+		String msg = result.getMsg();
+		result.setCode("999");
+	}
+}
+
+class Result{
+	public Result() {
+	}
+
+	public Result(String code, String msg) {
+		this.code = code;
+		this.msg = msg;
+	}
+
+	String code;
+	String msg;
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+}
+
+class T1Task implements Callable<String>{
+
+	private FutureTask<String> ft2;
+
+	public T1Task(FutureTask<String> ft2) {
+		this.ft2 = ft2;
+	}
+
+	@Override
+	public String call() throws Exception {
+
+		 System.out.println("T1:洗水壶...");
+		 TimeUnit.SECONDS.sleep(1);
+
+		System.out.println("T1:烧开水...");
+		TimeUnit.SECONDS.sleep(5);
+
+		String s = ft2.get();
+		System.out.println("T1:拿到茶叶:"+s);
+
+		System.out.println("T1:泡茶...");
+    	return "上茶:" + s;
+
+	}
+}
+
+class T2Task implements Callable<String>{
+	public T2Task() {
+	}
+
+	@Override
+	public String call() throws Exception {
+		System.out.println("T2:洗茶壶...");
+		TimeUnit.SECONDS.sleep(1);
+
+		System.out.println("T2:洗茶杯...");
+		TimeUnit.SECONDS.sleep(2);
+
+		System.out.println("T2:拿茶叶...");
+		TimeUnit.SECONDS.sleep(1);
+		return "红茶black tea";
 	}
 }
