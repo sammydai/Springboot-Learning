@@ -1,14 +1,13 @@
-package com.dwt.springboothelloworld.config;
+package com.learning.helloworld.config;
 
 import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * @Package: com.dwt.springboothelloworld.config
+ * @Package: com.learning.helloworld.config;
  * @Description:
  * @Author: Sammy
  * @Date: 2020/6/14 17:11

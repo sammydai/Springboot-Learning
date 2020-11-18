@@ -1,4 +1,4 @@
-package com.dwt.springboothelloworld.domain;
+package com.learning.helloworld.domain;
 
 import java.io.Serializable;
 import java.util.Objects;
