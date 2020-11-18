@@ -1,13 +1,12 @@
-
 server:
   port: 8989
   servlet:
     context-path: /demo
-spring:
-  security:
-    user:
-      name: sammy
-      password: 123456
+#spring:
+#  security:
+#    user:
+#      name: sammy
+#      password: 123456
 management:
   server:
     port: 8980
