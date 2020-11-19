@@ -1,10 +1,10 @@
-package com.dwt.springbootmybatis.service;
+package com.learning.mybatis.service;
 
-import com.dwt.springbootmybatis.domain.DeptExtObject;
-import com.dwt.springbootmybatis.domain.DeptUserObject;
-import com.dwt.springbootmybatis.domain.QueryVO;
-import com.dwt.springbootmybatis.domain.User;
-import com.dwt.springbootmybatis.mapper.UserMapper;
+import com.learning.mybatis.domain.DeptExtObject;
+import com.learning.mybatis.domain.DeptUserObject;
+import com.learning.mybatis.domain.QueryVO;
+import com.learning.mybatis.domain.User;
+import com.learning.mybatis.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

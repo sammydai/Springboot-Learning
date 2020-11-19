@@ -1,10 +1,7 @@
-import ch.qos.logback.core.net.SyslogOutputStream;
-import com.dwt.springbootmybatis.MyBatisApplication;
-import com.dwt.springbootmybatis.domain.Dept;
-import com.dwt.springbootmybatis.domain.DeptExtObject;
-import com.dwt.springbootmybatis.domain.DeptUserObject;
-import com.dwt.springbootmybatis.domain.User;
-import com.dwt.springbootmybatis.mapper.UserMapper;
+import com.learning.mybatis.MyBatisApplication;
+import com.learning.mybatis.domain.DeptExtObject;
+import com.learning.mybatis.domain.User;
+import com.learning.mybatis.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
@@ -12,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import sun.util.resources.ga.LocaleNames_ga;
 
 import java.util.Date;
 import java.util.List;

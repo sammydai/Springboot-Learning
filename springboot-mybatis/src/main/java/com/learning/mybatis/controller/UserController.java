@@ -1,13 +1,12 @@
-package com.dwt.springbootmybatis.controller;
+package com.learning.mybatis.controller;
 
-import com.dwt.springbootmybatis.domain.DeptExtObject;
-import com.dwt.springbootmybatis.domain.DeptUserObject;
-import com.dwt.springbootmybatis.domain.QueryVO;
-import com.dwt.springbootmybatis.domain.User;
-import com.dwt.springbootmybatis.service.UserService;
+import com.learning.mybatis.domain.DeptExtObject;
+import com.learning.mybatis.domain.DeptUserObject;
+import com.learning.mybatis.domain.QueryVO;
+import com.learning.mybatis.domain.User;
+import com.learning.mybatis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

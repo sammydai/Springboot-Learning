@@ -1,4 +1,4 @@
-package com.dwt.springbootmybatis.domain;
+package com.learning.mybatis.domain;
 
 import java.io.Serializable;
 import java.util.Date;

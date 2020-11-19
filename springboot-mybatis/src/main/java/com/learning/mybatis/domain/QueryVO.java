@@ -1,4 +1,4 @@
-package com.dwt.springbootmybatis.domain;
+package com.learning.mybatis.domain;
 
 /**
  * @Package: com.dwt.springbootmybatis.domain

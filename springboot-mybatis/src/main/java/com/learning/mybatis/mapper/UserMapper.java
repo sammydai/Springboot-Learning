@@ -1,12 +1,10 @@
-package com.dwt.springbootmybatis.mapper;
+package com.learning.mybatis.mapper;
 
-import com.dwt.springbootmybatis.domain.DeptExtObject;
-import com.dwt.springbootmybatis.domain.DeptUserObject;
-import com.dwt.springbootmybatis.domain.QueryVO;
-import com.dwt.springbootmybatis.domain.User;
-import com.sun.javafx.tk.TKPulseListener;
+import com.learning.mybatis.domain.DeptExtObject;
+import com.learning.mybatis.domain.DeptUserObject;
+import com.learning.mybatis.domain.QueryVO;
+import com.learning.mybatis.domain.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 

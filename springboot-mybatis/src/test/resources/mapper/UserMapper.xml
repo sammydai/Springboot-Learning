@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dwt.springbootmybatis.mapper.UserMapper">
+<mapper namespace="UserMapper">
 
-    <resultMap id="BaseResultMap" type="com.dwt.springbootmybatis.domain.User">
+    <resultMap id="BaseResultMap" type="User">
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="username" jdbcType="VARCHAR" property="username" />
         <result column="address" jdbcType="VARCHAR" property="address" />
@@ -32,7 +32,7 @@
     </insert>
 
     <!--场景3：parameterType 包装对象 pojo-->
-    <select id="getUserByName" parameterType="com.dwt.springbootmybatis.domain.QueryVO" resultMap="BaseResultMap">
+    <select id="getUserByName" parameterType="com.learning.mybatis.domain.QueryVO" resultMap="BaseResultMap">
         SELECT * FROM user WHERE username LIKE "%"#{user.username}"%"
     </select>
 
@@ -41,7 +41,7 @@
         select id,age,address,username,dept,createtime from user
     </select>
 
-    <resultMap id="DeptResultMap" type="com.dwt.springbootmybatis.domain.DeptUserObject">
+    <resultMap id="DeptResultMap" type="DeptUserObject">
         <id column="id" property="id"/>
         <result column="username" jdbcType="VARCHAR" property="username" />
         <result column="address" jdbcType="VARCHAR" property="address" />
@@ -49,7 +49,7 @@
         <result column="age" jdbcType="INTEGER" property="age" />
         <result column="createtime" jdbcType="DATE" property="createtime" />
 
-        <association property="department" javaType="com.dwt.springbootmybatis.domain.Dept">
+        <association property="department" javaType="Dept">
             <id column="dept_id" property="deptId"/>
             <result column="dept_name" property="deptName"/>
             <result column="dept_location" property="deptLocation"/>
@@ -69,13 +69,13 @@
        ON u.dept = d.dept_name
     </select>
 
-    <resultMap id="DeptExtResultMap" type="com.dwt.springbootmybatis.domain.DeptExtObject">
+    <resultMap id="DeptExtResultMap" type="DeptExtObject">
         <id column="dept_id" property="deptId"/>
         <result column="dept_name" property="deptName"/>
         <result column="dept_location" property="deptLocation"/>
         <result column="dept_manager" property="deptManager"/>
         <result column="dept_description" property="deptDescription"/>
-        <collection property="userList" ofType="com.dwt.springbootmybatis.domain.User">
+        <collection property="userList" ofType="User">
             <id column="id" property="id"/>
             <result column="username" jdbcType="VARCHAR" property="username" />
             <result column="address" jdbcType="VARCHAR" property="address" />

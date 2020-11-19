@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dwt.springbootmybatis.mapper.UserMapper">
+<mapper namespace="com.learning.mybatis.mapper.UserMapper">
 
-    <resultMap id="BaseResultMap" type="com.dwt.springbootmybatis.domain.User">
+    <resultMap id="BaseResultMap" type="com.learning.mybatis.domain.User">
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="username" jdbcType="VARCHAR" property="username" />
         <result column="address" jdbcType="VARCHAR" property="address" />
@@ -18,7 +18,7 @@
         SELECT * FROM user WHERE dept LIKE "%"#{dept}"%"
     </select>
 
-    <select id="getUser" resultType="com.dwt.springbootmybatis.domain.User">
+    <select id="getUser" resultType="com.learning.mybatis.domain.User">
         select * from user where id = #{id}
     </select>
 
@@ -26,13 +26,13 @@
     <!--插入返回自增主键 注意：mapper接口返回值依然是成功插入的记录数，但不同的是主键值已经赋值到领域模型实体的id中了。
         一般的INSERT操作——返回值为插入的记录数目　
         -->
-    <insert id="insertUser" parameterType="user" useGeneratedKeys="true" keyProperty="id" keyColumn="id" >
+    <insert id="insertUser" parameterType="com.learning.mybatis.domain.User" useGeneratedKeys="true" keyProperty="id" keyColumn="id" >
         INSERT INTO user(id,username,age,address,createtime,dept) VALUES
         (#{id,jdbcType=INTEGER},#{username,jdbcType=VARCHAR},#{age,jdbcType=INTEGER},#{address,jdbcType=VARCHAR},#{createtime, jdbcType=DATE},#{dept,jdbcType=VARCHAR})
     </insert>
 
     <!--场景3：parameterType 包装对象 pojo-->
-    <select id="getUserByName" parameterType="com.dwt.springbootmybatis.domain.QueryVO" resultMap="BaseResultMap">
+    <select id="getUserByName" parameterType="com.learning.mybatis.domain.QueryVO" resultMap="BaseResultMap">
         SELECT * FROM user WHERE username LIKE "%"#{user.username}"%"
     </select>
 
@@ -41,7 +41,7 @@
         select id,age,address,username,dept,createtime from user
     </select>
 
-    <resultMap id="DeptResultMap" type="com.dwt.springbootmybatis.domain.DeptUserObject">
+    <resultMap id="DeptResultMap" type="com.learning.mybatis.domain.DeptUserObject">
         <id column="id" property="id"/>
         <result column="username" jdbcType="VARCHAR" property="username" />
         <result column="address" jdbcType="VARCHAR" property="address" />
@@ -49,7 +49,7 @@
         <result column="age" jdbcType="INTEGER" property="age" />
         <result column="createtime" jdbcType="DATE" property="createtime" />
 
-        <association property="department" javaType="com.dwt.springbootmybatis.domain.Dept">
+        <association property="department" javaType="com.learning.mybatis.domain.Dept">
             <id column="dept_id" property="deptId"/>
             <result column="dept_name" property="deptName"/>
             <result column="dept_location" property="deptLocation"/>
@@ -68,13 +68,13 @@
        ON u.dept = d.dept_name
     </select>
 
-    <resultMap id="DeptExtResultMap" type="com.dwt.springbootmybatis.domain.DeptExtObject">
+    <resultMap id="DeptExtResultMap" type="com.learning.mybatis.domain.DeptExtObject">
         <id column="dept_id" property="deptId"/>
         <result column="dept_name" property="deptName"/>
         <result column="dept_location" property="deptLocation"/>
         <result column="dept_manager" property="deptManager"/>
         <result column="dept_description" property="deptDescription"/>
-        <collection property="userList" ofType="com.dwt.springbootmybatis.domain.User">
+        <collection property="userList" ofType="com.learning.mybatis.domain.User">
             <id column="id" property="id"/>
             <result column="username" jdbcType="VARCHAR" property="username" />
             <result column="address" jdbcType="VARCHAR" property="address" />

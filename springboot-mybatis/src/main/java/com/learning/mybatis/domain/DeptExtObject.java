@@ -1,6 +1,5 @@
-package com.dwt.springbootmybatis.domain;
+package com.learning.mybatis.domain;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 /**
