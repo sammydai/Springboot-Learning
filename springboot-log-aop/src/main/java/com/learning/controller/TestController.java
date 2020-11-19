@@ -1,5 +1,4 @@
-package com.dwt.jvm8.controller;
-
+package com.learning.controller;
 
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.util.StrUtil;
@@ -7,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *
  *
  *@description:
  *@author: Sammy

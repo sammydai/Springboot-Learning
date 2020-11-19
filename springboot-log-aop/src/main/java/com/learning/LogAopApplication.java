@@ -1,13 +1,13 @@
-package com.dwt.jvm8;
+package com.learning;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringbootLogAopApplication {
+public class LogAopApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootLogAopApplication.class, args);
+		SpringApplication.run(LogAopApplication.class, args);
 	}
 
 }

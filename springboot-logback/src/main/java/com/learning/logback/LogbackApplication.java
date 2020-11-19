@@ -1,4 +1,4 @@
-package com.dwt.springbootlogback;
+package com.learning.logback;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -7,10 +7,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 @Slf4j
-public class SpringbootLogbackApplication {
+public class LogbackApplication {
 
 	public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(SpringbootLogbackApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(LogbackApplication.class, args);
         int length = context.getBeanDefinitionNames().length;
         log.trace("trace=========Spring boot启动初始化了 {} 个 Bean", length);
         log.debug("debug=========Spring boot启动初始化了 {} 个 Bean", length);

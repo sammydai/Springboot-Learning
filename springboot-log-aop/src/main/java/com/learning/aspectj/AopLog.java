@@ -1,6 +1,5 @@
-package com.dwt.jvm8.aspectj;
+package com.learning.aspectj;
 
-import cn.hutool.http.useragent.UserAgentUtil;
 import cn.hutool.json.JSONUtil;
 import eu.bitwalker.useragentutils.UserAgent;
 import lombok.extern.slf4j.Slf4j;
@@ -8,7 +7,6 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -30,7 +28,7 @@ import java.util.Objects;
 public class AopLog {
     private static final String START_TIME = "request-start";
 
-    @Pointcut("execution(public * com.dwt.jvm8.controller.TestController.*(..))")
+    @Pointcut("execution(public * com.learning.controller.TestController.*(..))")
     public void log() {
     }
 
