@@ -1,4 +1,4 @@
-package com.dwt.springbootasync.task;
+package com.learning.async.task;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
@@ -9,10 +9,13 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Description:
- * @Author: Sammy
- * @Time: 2020/2/7 18:17
- */
+ *
+ *@Package: TaskFactory
+ *@Description: 异步方法测试
+ *@Author: Sammy
+ *@Date: 2020/11/22 11:57
+ *
+ **/
 @Component
 @Slf4j
 public class TaskFactory {
