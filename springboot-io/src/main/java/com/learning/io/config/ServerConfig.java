@@ -1,4 +1,4 @@
-package com.dwt.springboothelloworld.config;
+package com.learning.io.config;
 
 import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.context.ApplicationListener;
