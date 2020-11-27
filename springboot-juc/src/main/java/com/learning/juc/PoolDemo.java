@@ -1,14 +1,15 @@
-package com.dwt;
-
+package com.learning.juc;
 
 import jodd.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Executors;
@@ -19,8 +20,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
- * @Package: com.dwt
- * @Description:
+ * @Package: com.learning.juc
+ * @Description: JUC相关内容
  * @Author: Sammy
  * @Date: 2020/10/21 09:23
  */
