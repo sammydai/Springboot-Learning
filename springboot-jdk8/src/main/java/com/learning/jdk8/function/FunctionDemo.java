@@ -1,11 +1,12 @@
 package com.learning.jdk8.function;
 
+import com.learning.jdk8.domain.Emp;
+
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -69,4 +70,53 @@ public class FunctionDemo {
 		List<Integer> collect = Stream.iterate(1, x -> ++x).limit(10).collect(Collectors.toList());
 		System.out.println(collect);
 	}
+
+	public void lamdamethod() {
+			// 类的静态方法
+			Comparator<Integer> bb = Integer::compareTo;
+			System.out.println(bb.compare(2, 3));
+			Comparator<Integer> cc = (x, y) -> Integer.compare(x, y);
+			System.out.println(cc.compare(56, 77));
+
+			BiPredicate<String, String> bp = (x, y) -> x.equals(y);
+			System.out.println("a -->b " + bp.test("a", "b"));
+
+			BiPredicate<String, String> bp2 = String::equalsIgnoreCase;
+			System.out.println("abc -->abc " + bp2.test("abc", "abc"));
+
+			Consumer<String> con = x -> System.out.println(x + " test");
+			con.accept("sss");
+
+			Consumer<String> con1 = System.out::println;
+			con1.accept("aaa");
+
+			Emp emp = new Emp("sammy", 27);
+			//无参数，无返回值的用法
+			Supplier<String> getName = () -> emp.getName();
+			System.out.println(getName.get());
+
+			Supplier<Integer> getAge = emp::getAge;
+			System.out.println(getAge.get());
+
+			/*************** 构造器的引用 ****************/
+			// 无参构造函数，创建实例
+			Supplier<Emp> empSupplier = () -> new Emp();
+			Emp emp1 = empSupplier.get();
+			emp1.setAddress("Shanghai");
+			System.out.println(emp1);
+
+			Supplier<Emp> empSupplier2 = Emp::new;
+			Emp emp2 = empSupplier2.get();
+			emp2.setAddress("Beijing");
+			emp2.setName("passed");
+			System.out.println("emp2" + emp2);
+
+			Function<String, Emp> function1 = (x) -> new Emp(x, 8);
+			Emp london_city = function1.apply("london city");
+			System.out.println(london_city);
+
+			BiFunction<String, Integer, Emp> function2 = (x, y) -> new Emp(x, y);
+			Emp xiaohong = function2.apply("xiaohong", 17);
+			System.out.println(xiaohong);
+		}
 }

@@ -37,7 +37,8 @@
         <module>springboot-jwt</module>
         <module>springboot-io</module>
         <module>springboot-job-core</module>
-        <module>springboot-jvm8</module>
+        <module>springboot-jdk8</module>
+        <module>springboot-xxljob-test</module>
 
     </modules>
 
