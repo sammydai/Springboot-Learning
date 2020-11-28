@@ -1,8 +1,6 @@
 package com.learning.jdk8;
 
-import cn.hutool.core.lang.copier.Copier;
 import com.learning.jdk8.domain.Emp;
-import jdk.nashorn.internal.runtime.options.Option;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,6 +10,8 @@ import java.util.*;
 import java.util.function.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.*;
 
 /**
  * @Package: com.learning.jdk8
@@ -23,6 +23,7 @@ import java.util.stream.Stream;
 @SpringBootTest
 public class JDKApplicationTests {
 	private static List<Emp> list = new ArrayList<>();
+	private static List<Emp> list1 = new ArrayList<>();
 
 	static {
 		list.add(new Emp("xiaoHong1", 20, 1000.0));
@@ -33,6 +34,15 @@ public class JDKApplicationTests {
 		list.add(new Emp("xiaoHong6", 45, 9000.0));
 		list.add(new Emp("xiaoHong7", 55, 10000.0));
 		list.add(new Emp("xiaoHong8", 42, 15000.0));
+	}
+
+	static {
+		list1.add(new Emp("上海", "小名", 17));
+        list1.add(new Emp("北京", "小红", 18));
+        list1.add(new Emp("深圳", "小蓝", 19));
+        list1.add(new Emp("广州", "小灰", 20));
+        list1.add(new Emp("杭州", "小黄", 21));
+        list1.add(new Emp("贵阳", "小白", 22));
 	}
 
 	public static void println(Stream<Emp> stream) {
@@ -181,5 +191,23 @@ public class JDKApplicationTests {
 		BiFunction<String, Integer, Emp> function2 = (x, y) -> new Emp(x, y);
 		Emp xiaohong = function2.apply("xiaohong", 17);
 		System.out.println(xiaohong);
+	}
+
+	@Test
+	public void collectionmethod() {
+		List<String> names = list1.stream().map(emp -> emp.getName()).collect(toList());
+		Set<String> namesset = list1.stream().map(emp -> emp.getName()).collect(toSet());
+		System.out.println(list1.stream().count());
+
+		String[] arr ={"aa","ccc","sss"};
+		String ss = Arrays.stream(arr).collect(joining());
+		String ss1 = Arrays.stream(arr).collect(joining("|"));
+		List<String> collect = Arrays.stream(arr).collect(toList());
+		System.out.println(ss1);
+		System.out.println(ss);
+		System.out.println(collect);
+		//求数组中的某个值为key，为value，返回Map对象
+		Map<String, Emp> empMap = list1.stream().collect(toMap(Emp::getName, Function.identity()));
+
 	}
 }

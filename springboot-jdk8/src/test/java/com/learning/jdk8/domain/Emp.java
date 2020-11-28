@@ -22,6 +22,12 @@ public class Emp {
 		this.salary = salary;
 	}
 
+	public Emp(String address, String name, int age) {
+		this.address = address;
+		this.name = name;
+		this.age = age;
+	}
+
 	public Emp(String name, int age) {
 		this.name = name;
 		this.age = age;
