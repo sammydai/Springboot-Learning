@@ -1,5 +1,6 @@
 package com.learning.jdk8;
 
+import com.learning.jdk8.domain.Dish;
 import com.learning.jdk8.domain.Emp;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,11 +39,11 @@ public class JDKApplicationTests {
 
 	static {
 		list1.add(new Emp("上海", "小名", 17));
-        list1.add(new Emp("北京", "小红", 18));
-        list1.add(new Emp("深圳", "小蓝", 19));
-        list1.add(new Emp("广州", "小灰", 20));
-        list1.add(new Emp("杭州", "小黄", 21));
-        list1.add(new Emp("贵阳", "小白", 22));
+		list1.add(new Emp("北京", "小红", 18));
+		list1.add(new Emp("深圳", "小蓝", 19));
+		list1.add(new Emp("广州", "小灰", 20));
+		list1.add(new Emp("杭州", "小黄", 21));
+		list1.add(new Emp("贵阳", "小白", 22));
 	}
 
 	public static void println(Stream<Emp> stream) {
@@ -172,7 +173,7 @@ public class JDKApplicationTests {
 		System.out.println(getAge.get());
 
 		/*************** 构造器的引用 ****************/
-        // 无参构造函数，创建实例
+		// 无参构造函数，创建实例
 		Supplier<Emp> empSupplier = () -> new Emp();
 		Emp emp1 = empSupplier.get();
 		emp1.setAddress("Shanghai");
@@ -208,6 +209,6 @@ public class JDKApplicationTests {
 		System.out.println(collect);
 		//求数组中的某个值为key，为value，返回Map对象
 		Map<String, Emp> empMap = list1.stream().collect(toMap(Emp::getName, Function.identity()));
-
 	}
+
 }
