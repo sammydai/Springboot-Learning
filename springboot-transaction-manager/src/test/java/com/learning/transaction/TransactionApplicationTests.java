@@ -1,10 +1,10 @@
-package com.dwt.springboottransactionmanager;
+package com.learning.transaction;
 
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringbootTransactionManagerApplicationTests {
+class TransactionApplicationTests {
 
 	@Test
 	void contextLoads() {
