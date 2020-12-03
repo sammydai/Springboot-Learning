@@ -1,7 +1,5 @@
 package com.learning.async.thread;
 
-import sun.jvm.hotspot.runtime.ResultTypeFinder;
-
 import java.util.concurrent.*;
 
 /**
