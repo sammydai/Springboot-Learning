@@ -17,9 +17,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Dish {
-	private String name;
-	private boolean vegetarian;
-	private int calories;
-	private Type type;
+	public String name;
+	public boolean vegetarian;
+	public int calories;
+	public Type type;
 	public enum Type {MEAT, FISH, OTHER}
 }

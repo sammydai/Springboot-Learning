@@ -1,12 +1,12 @@
 package com.learning.jdk8;
 
 import com.learning.jdk8.domain.Dish;
+import com.sun.java.swing.plaf.windows.WindowsTreeUI;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.security.Key;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -99,5 +99,40 @@ public class StreamTests {
 		//4 由函数生成流：创建无限流
 		Stream.iterate(0, i -> i + 2).limit(10).forEach(System.out::println);
 		Stream.generate(()->Math.random()).limit(5).forEach(System.out::println);
+	}
+
+	@Test
+	public void collectionmethod() {
+		System.out.println("找出热量最高的食物:");
+		Optional<Dish> maxDish = menu.stream().collect(Collectors.maxBy(Comparator.comparing(Dish::getCalories)));
+		maxDish.ifPresent(System.out::println);
+
+		System.out.println("找出热量最低的食物:");
+		Optional<Dish> minDish = menu.stream().collect(Collectors.minBy(Comparator.comparing(Dish::getCalories)));
+		minDish.ifPresent(System.out::println);
+
+		Integer sumCol = menu.stream().collect(Collectors.summingInt(Dish::getCalories));
+		System.out.println("总热量:" + sumCol	);
+
+		Double avgCol = menu.stream().collect(Collectors.averagingInt(Dish::getCalories));
+		System.out.println("平均热量:" + avgCol);
+
+		//汇总合集 热量总和、平均值、最大值和最小值:
+		IntSummaryStatistics collect = menu.stream().collect(Collectors.summarizingInt(Dish::getCalories));
+		System.out.println("int:" + collect);
+
+		//分组函数返回的值作为映射的键，把流中所有具有这个分类值的项目的列表作为对应的映射值。
+		Map<Dish.Type, List<Dish>> map = menu.stream().collect(Collectors.groupingBy(Dish::getType));
+		map.forEach((k,v)-> System.out.println("key:"+k+"--->value: "+v));
+
+		// menu.stream().collect(Collectors.groupingBy(Dish::getType,
+		// 		Collectors.groupingBy(dish->{
+		// 	if (dish.getCalories() <= 400) {
+         //                return CaloricLevel.DIET;
+         //            } else if (dish.getCalories() <= 700) {
+         //                return CaloricLevel.NORMAL;
+         //            } else return CaloricLevel.FAT;
+		// })));
+
 	}
 }
