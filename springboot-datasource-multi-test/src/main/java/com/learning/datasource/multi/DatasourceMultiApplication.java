@@ -1,4 +1,4 @@
-package com.dwt.springbootdatasourcetest;
+package com.learning.datasource.multi;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -30,19 +30,17 @@ import javax.sql.DataSource;
  *   2）根据先定义DataSourceProperties.initializeDataSourceBuilder().build()创建数据源
  *   3）事务管理器PlatformTransactionManager是接口 DataSourceTransactionManager是其实现类
  *   DataSourceTransactionManager（datasource） 这里的入参可以用第二部生成的bean注入
- * @Exception
  *
  */
-
 
 @Slf4j
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,
 		JdbcTemplateAutoConfiguration.class,
 		DataSourceTransactionManagerAutoConfiguration.class})
-public class SpringbootDatasourceTestApplication {
+public class DatasourceMultiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootDatasourceTestApplication.class, args);
+		SpringApplication.run(DatasourceMultiApplication.class, args);
 	}
 
 	@Bean
