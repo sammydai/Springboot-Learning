@@ -16,13 +16,16 @@ spring:
       minEvictableIdleTimeMillis: 300000
       validationQuery: SELECT 1 FROM DUAL
       testWhileIdle: true
-      testOnBorrow: false
-      test-on-return: false
+      testOnBorrow: true
+      test-on-return: true
       pool-prepared-statements: true
-      filters: stat,wall,log4j
       max-pool-prepared-statement-per-connection-size: 20
       use-global-data-source-stat: true
       connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      filter:
+        config:
+          enabled: true
+      filters: conn,config,stat,slf4j
 
 
 #上半区公共部分对应的是 org.springframework.boot.autoconfigure.jdbc.DataSourceProperties 中的属性
