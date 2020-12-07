@@ -18,18 +18,20 @@ import org.springframework.stereotype.Service;
 @Configuration
 public class BeanConfig {
 
-	// @Bean
-	// public City city(){
-	// 	City city = new City();
-     //    city.setCityName("千岛湖");
-     //    return city;
-	// }
+	@Bean
+	public City city(){
+		City city = new City();
+        city.setCityName("千岛湖");
+        return city;
+	}
 
 	/**
      * 这里加了ConditionalOnBean注解，
 	 * 就代表如果city存在才实例化people
+	 * initMethod不要加括号
+	 * myInit方法写在Domain上
      */
-	@Bean
+	@Bean(initMethod = "myInit",destroyMethod = "myDestory")
 	@ConditionalOnBean(name = "city")
     public People people(City city) {
         //这里如果city实体没有成功注入 这里就会报空指针

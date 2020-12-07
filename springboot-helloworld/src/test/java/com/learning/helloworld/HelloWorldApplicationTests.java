@@ -1,6 +1,7 @@
 package com.learning.helloworld;
 
 import com.learning.helloworld.domain.People;
+import com.learning.helloworld.utils.ApplicationContextUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,7 @@ public class HelloWorldApplicationTests {
         System.out.println("= = = = = = = = = = = = = ");
         System.out.println("people = " + people);
         System.out.println("= = = = = = = = = = = = = ");
+        People bean = ApplicationContextUtils.getBean(People.class);
+
     }
 }
