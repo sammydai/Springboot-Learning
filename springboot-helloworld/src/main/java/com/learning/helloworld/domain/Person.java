@@ -11,12 +11,38 @@ import java.util.Objects;
  */
 
 public class Person implements Serializable {
+	public Person(String name, City city) {
+		this.name = name;
+		this.city = city;
+	}
+
+	@Override
+	public String toString() {
+		return "Person{" +
+				"name='" + name + '\'' +
+				", age=" + age +
+				", job='" + job + '\'' +
+				", city=" + city +
+				", address='" + address + '\'' +
+				'}';
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	private String name;
 	private int age;
 	private transient String job;
 	private static String color ="BLUE";
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	private City city;
 
 	private String address;
 
@@ -52,17 +78,6 @@ public class Person implements Serializable {
 	public int hashCode() {
 
 		return Objects.hash(name, age, job, address);
-	}
-
-	@Override
-	public String toString() {
-		return "Person{" +
-				"name='" + name + '\'' +
-				", age=" + age +
-				", job='" + job + '\'' +
-				", color='"+color+'\''+
-				", address='"+address+'\''+
-				'}';
 	}
 
 	public String getName() {

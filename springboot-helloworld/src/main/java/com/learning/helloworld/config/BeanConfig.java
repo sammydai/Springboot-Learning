@@ -2,7 +2,9 @@ package com.learning.helloworld.config;
 
 import com.learning.helloworld.domain.City;
 import com.learning.helloworld.domain.People;
+import com.learning.helloworld.domain.Person;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +27,7 @@ public class BeanConfig {
         return city;
 	}
 
+
 	/**
      * 这里加了ConditionalOnBean注解，
 	 * 就代表如果city存在才实例化people
@@ -33,7 +36,7 @@ public class BeanConfig {
      */
 	@Bean(initMethod = "myInit",destroyMethod = "myDestory")
 	@ConditionalOnBean(name = "city")
-    public People people(City city) {
+	public People people(City city) {
         //这里如果city实体没有成功注入 这里就会报空指针
         city.setCityCode(301701);
         return new People("小小", 3, city);
