@@ -2,16 +2,19 @@ package com.learning.helloworld;
 
 import com.learning.helloworld.config.BeanConfig;
 import com.learning.helloworld.domain.*;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Package: com.learning.helloworld
@@ -78,5 +81,34 @@ public class HelloBeanTests {
 
 		log.info("index1 = " + index1);
 		log.info("index2 = " + index2);
+	}
+
+
+	private List<String> wrongMethod(FooService fooService, Integer i, String s, String t) {
+		log.info("result {} {} {} {}", i + 1, s.equals("OK"), s.equals(t),
+				new ConcurrentHashMap<String, String>().put(null, null));
+		if (fooService.getBarService().bar().equals("OK"))
+			log.info("OK");
+		return null;
+	}
+
+	@GetMapping("wrong")
+	public int wrong(@RequestParam(value = "test", defaultValue = "1111") String test) {
+		return wrongMethod(test.charAt(0) == '1' ? null : new FooService(),
+				test.charAt(1) == '1' ? null : 1,
+				test.charAt(2) == '1' ? null : "OK",
+				test.charAt(3) == '1' ? null : "OK").size();
+	}
+
+	class FooService {
+		@Getter
+		private BarService barService;
+
+	}
+
+	class BarService {
+		String bar() {
+			return "OK";
+		}
 	}
 }
