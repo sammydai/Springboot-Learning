@@ -1,23 +1,23 @@
-package com.learning.helloworld;
+package com.learning.helloworld.optional;
 
 import com.learning.helloworld.domain.City;
+import com.learning.helloworld.domain.People;
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
-import org.junit.runner.Result;
-import org.junit.runner.notification.Failure;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
+import static com.learning.helloworld.optional.OptionalMethod.getName;
+import static org.junit.Assert.*;
 
-/**
- * @Package: com.learning.helloworld
- * @Description: Test Optional
- * @Author: Sammy
- * @Date: 2020/12/8 09:09
- */
+public class OptionalMethodTest {
 
-public class TestOptional {
+	// @Test(expected = IllegalArgumentException.class)
+	@Test
+	public void getCityNameRight() {
+		City city = new City("london", 200);
+		People pp = new People("kfdeveloper", 25, city);
+		assertEquals("london",OptionalMethod.getCityNameRight(pp));
+	}
 
 	/**
 	 * 和原来的null没区别，创建一个空的optional对象
@@ -58,11 +58,11 @@ public class TestOptional {
 		 * 		如果容器为空，就使用supplier这个供给型接口
 		 */
 
-		String string = of.orElseGet(()->"上海");
+		String string = of.orElseGet(() -> "上海");
 		System.out.println(string);
 	}
 
-	@Test
+	@Test(expected = RuntimeException.class)
 	public void test7() {
 		Optional<String> of = Optional.ofNullable(null);
 		/*
@@ -70,30 +70,13 @@ public class TestOptional {
 		 * 		如果容器中非空，就返回容器中的结果
 		 * 		如果容器为空，就使用supplier这个供给型接口
 		 */
-
 		String ss = of.orElseThrow(() -> new RuntimeException("用户信息错误"));
 		System.out.println(ss);
-	}
-
-	public static String getName(City city) {
-		return Optional.ofNullable(city)
-				.map(cc -> cc.getCityName())
-				.orElse("Unknown");
 	}
 
 	@Test
 	public void test8() {
 		System.out.println(getName(City.builder().cityName("London").cityCode(100).build()));
-		assertEquals("Test Result for getName:","Unknown",getName(null));
-	}
-
-	public static void main(String[] args) {
-		Result result = JUnitCore.runClasses(TestOptional.class);
-		for (Failure failure : result.getFailures()) {
-			System.out.println(failure.toString());
-		}
-		if (result.wasSuccessful()) {
-			System.out.println("Test Cases finished successfully");
-		}
+		assertEquals("Test Result for getName:", "Unknown", getName(null));
 	}
 }
