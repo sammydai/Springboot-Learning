@@ -1,2 +1,32 @@
 server:
   port: 8990
+spring:
+  datasource:
+    username: root
+    password: kangta27
+    url:  jdbc:mysql://localhost:3306/testjava?characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: true
+      test-on-return: true
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      use-global-data-source-stat: true
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      filter:
+        config:
+          enabled: true
+      filters: conn,config,stat,slf4j
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

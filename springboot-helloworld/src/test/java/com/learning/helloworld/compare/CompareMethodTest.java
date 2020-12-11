@@ -1,8 +1,6 @@
 package com.learning.helloworld.compare;
 
 import com.learning.helloworld.domain.City;
-import com.learning.helloworld.domain.Student;
-import com.learning.helloworld.domain.StudentRight;
 import com.learning.helloworld.domain.Town;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

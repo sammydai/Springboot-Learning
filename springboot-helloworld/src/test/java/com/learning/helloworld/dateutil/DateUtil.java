@@ -1,7 +1,6 @@
-package com.learning.helloworld.date;
+package com.learning.helloworld.dateutil;
 
 import org.junit.Test;
-import sun.util.resources.cldr.aa.CalendarData_aa_ER;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,7 +12,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /**
- * @Package: com.learning.helloworld.date
+ * @Package: com.learning.helloworld.dateutil
  * @Description: Date Util
  * @Author: Sammy
  * @Date: 2020/12/8 12:55
@@ -75,7 +74,7 @@ public class DateUtil {
 		ZoneId timeZoneJST = ZoneOffset.ofHours(9);
 		//格式化器
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		//ZonedDateTime 第一个参数：the local date-time 第二个参数：时区
+		//ZonedDateTime 第一个参数：the local dateutil-time 第二个参数：时区
 		ZonedDateTime date = ZonedDateTime.of(LocalDateTime.parse(stringDate, dateTimeFormatter), timeZoneJST);
 		DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z");
 		System.out.println(timeZoneSH.getId() + outputFormat.withZone(timeZoneSH).format(date));
@@ -94,6 +93,22 @@ public class DateUtil {
 		System.out.println("weekYear:" + calendar.getWeekYear());
 		System.out.println("firstDayOfWeek:" + calendar.getFirstDayOfWeek());
 		System.out.println("minimalDaysInFirstWeek:" + calendar.getMinimalDaysInFirstWeek());
+	}
+
+	@Test
+	public void nextMonth() {
+		//Calender方法
+		Calendar instance = Calendar.getInstance();
+		instance.setTime(new Date());
+		instance.add(Calendar.DAY_OF_MONTH,30);
+		System.out.println(instance.getTime());
+
+		//Java8 API方法
+		LocalDateTime localDateTime = LocalDateTime.now();
+		System.out.println(localDateTime.plusDays(30));
+
+		System.out.println("//测试操作日期");
+		System.out.println(LocalDateTime.now().minus(Period.ofDays(1)));
 	}
 
 }

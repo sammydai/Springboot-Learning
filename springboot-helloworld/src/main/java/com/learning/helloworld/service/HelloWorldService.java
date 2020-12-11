@@ -1,5 +1,8 @@
 package com.learning.helloworld.service;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  * @Package: com.learning.helloworld.service
  * @Description: Hello World Service
@@ -12,3 +15,5 @@ public class HelloWorldService {
 		return "Hello World";
 	}
 }
+
+

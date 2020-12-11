@@ -1,10 +1,11 @@
-package com.learning.helloworld.domain;
+package com.learning.helloworld.nullvalue;
 
 import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import java.util.Date;
 
@@ -18,6 +19,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 @Data
 @Entity
+@Table(name = "user")
 public class User {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)

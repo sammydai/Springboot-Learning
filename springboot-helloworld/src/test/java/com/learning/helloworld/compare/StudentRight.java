@@ -1,4 +1,4 @@
-package com.learning.helloworld.domain;
+package com.learning.helloworld.compare;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

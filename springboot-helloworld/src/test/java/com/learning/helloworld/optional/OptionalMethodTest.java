@@ -1,14 +1,28 @@
 package com.learning.helloworld.optional;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.learning.helloworld.domain.City;
 import com.learning.helloworld.domain.People;
+import com.learning.helloworld.nullvalue.UserDto;
+import com.learning.helloworld.nullvalue.UserEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.Optional;
-
 import static com.learning.helloworld.optional.OptionalMethod.getName;
 import static org.junit.Assert.*;
 
+/**
+ *
+ *@Package: com.learning.helloworld.optional
+ *@Description: Optional Method Test
+ *@Author: Sammy
+ *@Date: 2020/12/8 17:04
+ *
+ **/
+@Slf4j
 public class OptionalMethodTest {
 
 	// @Test(expected = IllegalArgumentException.class)
@@ -78,5 +92,31 @@ public class OptionalMethodTest {
 	public void test8() {
 		System.out.println(getName(City.builder().cityName("London").cityCode(100).build()));
 		assertEquals("Test Result for getName:", "Unknown", getName(null));
+	}
+
+	@Test
+	public void test9() {
+		UserDto userDto = new UserDto();
+		Optional<String> name = userDto.getName();
+		System.out.println(name);
+	}
+
+	@Test
+	public void test10() {
+		UserDto userDto = new UserDto();
+		userDto.setName(null);
+		String ss = userDto.getName().orElse("sssother");
+		System.out.println(ss);
+	}
+
+	@Test
+	public void test11() throws IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new Jdk8Module());
+        UserDto result = objectMapper.readValue("{\"id\":\"1\", \"age\":30, \"name\":null}",UserDto.class);
+        log.info("field name with null value dto:{} name:{}", result, result.getName().orElse("N/A"));
+        //field name with null value dto:UserDto(id=1, name=Optional.empty, age=Optional[30]) name:N/A
+        log.info("missing field name dto:{}",objectMapper.readValue("{\"id\":\"1\", \"age\":30}",UserDto.class));
+        // missing field name dto:UserDto(id=1, name=null, age=Optional[30])
 	}
 }

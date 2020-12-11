@@ -25,10 +25,10 @@ public class HelloWorldApplication {
 
 
 	public static void main(String[] args) throws Exception {
-		// SpringApplication.run(HelloWorldApplication.class, args);
-		SpringApplication sa = new SpringApplication(HelloWorldApplication.class);
-		sa.run(args);
-		People bean = ApplicationContextUtils.getBean(People.class);
+		SpringApplication.run(HelloWorldApplication.class, args);
+		// SpringApplication sa = new SpringApplication(HelloWorldApplication.class);
+		// sa.run(args);
+		// People bean = ApplicationContextUtils.getBean(People.class);
 
 
 	}

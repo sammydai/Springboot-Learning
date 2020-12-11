@@ -27,13 +27,13 @@ public class MyInterceptor implements HandlerInterceptor {
 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-		HttpSession session = request.getSession();
-		if (!request.getRequestURI().contains("/online")) {
-			String sessionName = (String) session.getAttribute("name");
-			if ("haixiang".equals(sessionName)) {
-                log.info("【MyInterceptor】当前浏览器存在 session:{}",sessionName);
-            }
-		}
+		// HttpSession session = request.getSession();
+		// if (!request.getRequestURI().contains("/online")) {
+		// 	String sessionName = (String) session.getAttribute("name");
+		// 	if ("haixiang".equals(sessionName)) {
+         //        log.info("【MyInterceptor】当前浏览器存在 session:{}",sessionName);
+         //    }
+		// }
 	}
 
 	@Override

@@ -27,14 +27,15 @@ public class MyFilter implements Filter {
         HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper((HttpServletResponse) servletResponse);
 		String requestUri = request.getRequestURI();
 		log.info("请求地址是："+requestUri);
-		if (requestUri.contains("/addSession")
-            || requestUri.contains("/removeSession")
-            || requestUri.contains("/online")
-            || requestUri.contains("/favicon.ico")) {
-            filterChain.doFilter(servletRequest, wrapper);
-        } else {
-            wrapper.sendRedirect("/online");
-        }
+		filterChain.doFilter(servletRequest, wrapper);
+		// if (requestUri.contains("/addSession")
+        //     || requestUri.contains("/removeSession")
+        //     || requestUri.contains("/online")
+        //     || requestUri.contains("/favicon.ico")) {
+        //     filterChain.doFilter(servletRequest, wrapper);
+        // } else {
+        //     wrapper.sendRedirect("/online");
+        // }
 	}
 
 	@Override
