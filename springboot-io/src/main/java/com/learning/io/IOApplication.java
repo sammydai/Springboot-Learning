@@ -1,23 +1,20 @@
 package com.learning.io;
 
 import cn.hutool.core.util.StrUtil;
-import com.learning.io.config.ServerConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.OutputStreamWriter;
 
 
 @RestController
 @SpringBootApplication
 public class IOApplication {
-
-	@Autowired
-	private ServerConfig serverConfig;
-
 
 	private static void writerFileStreamWriter() throws Exception {
 		OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream("/Users/daiwenting/Documents/lua/test.txt"), "utf-8");
@@ -41,7 +38,7 @@ public class IOApplication {
 	@GetMapping(value = "/httpserver/hello")
 	public String getHello(@RequestParam(name = "who", required = false) String who) {
 		if (StrUtil.isBlank(who)) {
-			who = "World First this is localhost !!! " + serverConfig.getUrl();
+			// who = "World First this is localhost !!! " + serverConfig.getUrl();
 		}
 		return StrUtil.format("Hello, {}!", who);
 	}

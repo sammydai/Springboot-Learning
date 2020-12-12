@@ -11,12 +11,6 @@ import java.nio.charset.Charset;
  */
 
 public class ReaderFile {
-	public static void main(String[] args) {
-		// readFileStream("/Users/daiwenting/Documents/TestCase/Person.txt");
-		// readFileReader("/Users/daiwenting/Documents/TestCase/cloudHttp.txt");
-		// readFileStreamReader("/Users/daiwenting/Documents/lua/test.txt");
-		readFileBuffer("/Users/daiwenting/Documents/TestCase/cloudHttp.txt");
-	}
 
 	/**
 	 * 字节输入流 InputStream

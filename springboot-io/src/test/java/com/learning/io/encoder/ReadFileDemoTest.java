@@ -12,7 +12,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 @Slf4j
 public class ReadFileDemoTest {
@@ -48,6 +47,9 @@ public class ReadFileDemoTest {
 	}
 
 	@Test
+	/**
+	 * 使用 InputStreamReader 读取字符流，并指定字符集为 GBK
+	 */
 	public void readFileEncodeRight() throws IOException {
 		InputStreamReader isr = new InputStreamReader(new FileInputStream("hello.txt"), Charset.forName("GBK"));
 		char[] chars = new char[1024];
@@ -59,5 +61,4 @@ public class ReadFileDemoTest {
 		log.info("result1: {}", content);
 		log.info("result2: {}",Files.readAllLines(Paths.get("hello.txt"), Charset.forName("GBK")).stream().findFirst().orElse(""));
 	}
-
 }
