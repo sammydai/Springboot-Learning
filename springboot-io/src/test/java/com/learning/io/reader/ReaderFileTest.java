@@ -1,5 +1,7 @@
 package com.learning.io.reader;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -25,4 +27,5 @@ public class ReaderFileTest {
 	public void readFileBuffer() {
 		ReaderFile.readFileBuffer("/Users/daiwenting/Documents/TestCase/cloudHttp.txt");
 	}
+
 }
