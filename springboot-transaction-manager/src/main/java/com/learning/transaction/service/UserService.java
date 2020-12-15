@@ -74,11 +74,11 @@ public class UserService {
 
 	/**
 	 * 异常无法传播出方法，导致事务无法回滚
-	 * 异常被捕捉到了，没有传播出方法
+	 * 异常被捕捉到了，没有传播出方法，异常没有传播出去
 	 * @param name
 	 */
 	@Transactional
-	public void createUserWrong3(String name) {
+	public void createUserCatchExceptionWrong(String name) {
 		try {
 			userRepository.save(new UserEntity(name));
 			throw new RuntimeException("error");
@@ -94,7 +94,7 @@ public class UserService {
 	 * @throws IOException
 	 */
 	@Transactional
-	public void createUserWrong4(String name) throws IOException {
+	public void createUserNonRunExcepitonWrong(String name) throws IOException {
 		userRepository.save(new UserEntity(name));
 		otherTask();
 	}
@@ -109,7 +109,7 @@ public class UserService {
 	 * @param name
 	 */
 	@Transactional(rollbackFor = Exception.class)
-	public void createUserRight3(String name) {
+	public void createUserManulRollbackRight(String name) {
 		try {
 			userRepository.save(new UserEntity(name));
 			throw new RuntimeException("error");
@@ -127,7 +127,7 @@ public class UserService {
 	 * @throws IOException
 	 */
 	@Transactional(rollbackFor = Exception.class)
-	public void createUserRight4(String name) throws IOException {
+	public void createUserExcepAnnotationRight(String name) throws IOException {
 		userRepository.save(new UserEntity(name));
 		otherTask();
 	}
@@ -145,11 +145,21 @@ public class UserService {
 			subUserService.createSubUserWithExceptionWrong(entity);
 		} catch (Exception ex) {
 			/**
-			 * 虽然捕获了异常，但是因为没有开启新事务，
-			 * 而当前事务因为异常已经被标记为rollback了，所以最终还是会回滚。
+			 * 虽然捕获了异常，但是因为主任务没有开启新事务，
+			 * 而当前事务因为子任务的异常已经被标记为rollback了，所以最终还是会回滚。
  			 */
 			log.error("create sub user error:{}", ex.getMessage());
 		}
+	}
+
+	/**
+	 * 子方法抛出了异常，主方法也被回滚了
+	 * @param entity
+	 */
+	@Transactional
+	public void createUserSubExceptionWrong(UserEntity entity) {
+		createMainUser(entity);
+		subUserService.createSubUserWithExceptionWrong(entity);
 	}
 
 	@Transactional

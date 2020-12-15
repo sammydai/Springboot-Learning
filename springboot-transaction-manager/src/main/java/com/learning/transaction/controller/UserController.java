@@ -42,22 +42,38 @@ public class UserController {
 		return userService.getUserCount(name);
 	}
 
-	@GetMapping("wrong2")
+	/**
+	 * 异常无法传播出方法，导致事务无法回滚
+	 * @param name
+	 * @return
+	 */
+	@GetMapping("catchexception")
 	public int wrong2(@RequestParam("name") String name) {
-		log.info("====>invoke wrong3");
-		userService.createUserWrong3(name);
+		log.info("====>invoke Catch Exception Wrong");
+		userService.createUserCatchExceptionWrong(name);
 		return userService.getUserCount(name);
 	}
 
-	@GetMapping("wrong3")
+	/**
+	 * 方法传播出去的是受检异常（非RuntimeException）
+	 * 不会回滚
+	 * @param name
+	 * @return
+	 * @throws IOException
+	 */
+	@GetMapping("nonrunexception")
 	public int wrong3(@RequestParam("name") String name) throws IOException {
-		log.info("====>invoke wrong4");
-		userService.createUserWrong4(name);
+		log.info("====>invoke Non Runtime Exception Wrong");
+		userService.createUserNonRunExcepitonWrong(name);
 		return userService.getUserCount(name);
 	}
 
-
-	@GetMapping("wrong4")
+	/**
+	 * 主方法一起被回滚了
+	 * @param name
+	 * @return
+	 */
+	@GetMapping("mainmethodrollback")
 	public int wrong(@RequestParam("name") String name) {
 		try {
 			userService.createUserWrong(new UserEntity(name));
@@ -67,13 +83,47 @@ public class UserController {
 		return userService.getUserCount(name);
 	}
 
-	@GetMapping("right4")
+	@GetMapping("submethodexception")
+	public int wrong5(@RequestParam("name") String name) {
+		try {
+			userService.createUserSubExceptionWrong(new UserEntity(name));
+		} catch (Exception ex) {
+			log.error("createUserWrong failed, reason:{}", ex.getMessage());
+		}
+		return userService.getUserCount(name);
+	}
+
+	@GetMapping("mainmethodcommit")
 	public int right4(@RequestParam("name") String name) {
 		try {
 			userService.createUserRight(new UserEntity(name));
 		} catch (Exception ex) {
 			log.error("createUserWrong failed, reason:{}", ex.getMessage());
 		}
+		return userService.getUserCount(name);
+	}
+
+	/**
+	 * 自己手动触发回滚操作
+	 * @param name
+	 * @return
+	 */
+	@GetMapping("manulrollback")
+	public int right3(@RequestParam("name") String name) {
+		userService.createUserManulRollbackRight(name);
+		return userService.getUserCount(name);
+	}
+
+	/**
+	 * 期望遇到所有的 Exception 都回滚事务
+	 * 加了rollback注解配置
+	 * @param name
+	 * @return
+	 * @throws IOException
+	 */
+	@GetMapping("exceptionannotation")
+	public int right2(@RequestParam("name") String name) throws IOException {
+		userService.createUserExcepAnnotationRight(name);
 		return userService.getUserCount(name);
 	}
 }
