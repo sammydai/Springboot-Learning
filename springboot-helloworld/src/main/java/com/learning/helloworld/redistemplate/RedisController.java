@@ -69,7 +69,7 @@ public class RedisController {
 	public void right2() {
 		User user = new User("zhuye", 36);
 		userRedisTemplate.opsForValue().set(user.getName(),user);
-		Object userFromRedis = this.userRedisTemplate.opsForValue().get(user.getName());
+		User userFromRedis = this.userRedisTemplate.opsForValue().get(user.getName());
 		log.info("userRedisTemplate get{} {}", userFromRedis, userFromRedis.getClass());
 		log.info("stringRedisTemplate get {}",stringRedisTemplate.opsForValue().get(user.getName()));
 	}

@@ -23,10 +23,16 @@ public class RedisTemplateBean {
 		redisTemplate.setConnectionFactory(redisConnectionFactory);
 		Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
 		ObjectMapper objectMapper = new ObjectMapper();
+		// objectMapper.enable(DeserializationFeature.USE_LONG_FOR_INTS);
+		//把类信息作为属性写入value中
+		objectMapper.activateDefaultTyping(objectMapper.getPolymorphicTypeValidator(), ObjectMapper.DefaultTyping.NON_FINAL);
+		jackson2JsonRedisSerializer.setObjectMapper(objectMapper);
 		redisTemplate.setKeySerializer(RedisSerializer.string());
-		redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+		// redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+		redisTemplate.setValueSerializer(RedisSerializer.json());
 		redisTemplate.setHashKeySerializer(RedisSerializer.string());
-		redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
+		// redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
+		redisTemplate.setHashValueSerializer(RedisSerializer.json());
 		redisTemplate.afterPropertiesSet();
 		return redisTemplate;
 	}

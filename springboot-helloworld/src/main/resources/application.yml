@@ -37,3 +37,9 @@ spring:
       pool:
         max-active: 10
         max-idle: 10
+  jackson:
+    deserialization:
+      read_unknown_enum_values_using_default_value: true
+#  jackson:
+#    serialization:
+#      write_enums_using_index: true
