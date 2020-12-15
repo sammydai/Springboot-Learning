@@ -1,0 +1,20 @@
+server:
+  port: 8087
+spring:
+  datasource:
+    username: root
+    password: kangta27
+    url:  jdbc:mysql://localhost:3306/springbootdb?characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+management:
+  server:
+    port: 45679
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+user:
+  name: "defaultadminname"

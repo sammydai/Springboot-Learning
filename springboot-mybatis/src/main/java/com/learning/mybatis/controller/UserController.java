@@ -25,6 +25,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	//TODO:Mybatis翻页功能
 	@RequestMapping("/user")
 	public List<User> queryUser(){
 		List<User> userList = userService.getUserList();
