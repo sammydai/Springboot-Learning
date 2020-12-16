@@ -1,6 +1,5 @@
 package com.dwt.redis.entity;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 /**
