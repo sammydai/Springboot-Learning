@@ -1,5 +1,7 @@
 package com.learning.juc.future;
 
+import org.junit.Test;
+
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
@@ -12,7 +14,9 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class CompleteFutureTest {
-	public static void main(String[] args) {
+
+	@Test
+	public static void test() {
 		CompletableFuture<String> f0 = CompletableFuture.supplyAsync(() -> "WORldd").thenApply(s -> s + "QQ").thenApply(String::toUpperCase);
 		System.out.println(f0.join());
 	}
