@@ -1,7 +1,6 @@
-
 spring:
   application:
-    name: HelloWorldProvider
+    name: HelloWorldZKProvider
   cloud:
     zookeeper:
       discovery:

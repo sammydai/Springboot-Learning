@@ -1,12 +1,12 @@
-package com.dwt.springbootzookeeperconsumer.client;
+package com.learning.zkconsumer.client;
 
-import com.dwt.springbootzookeeperconsumer.config.FeignClientConfig;
+import com.learning.zkconsumer.config.FeignClientConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * @Package: com.dwt.springbootzookeeperconsumer.client
+ * @Package: com.learning.zkconsumer.client
  * @Description:
  * @Author: Sammy
  * @Date: 2020/3/21 20:19
@@ -23,10 +23,13 @@ import org.springframework.web.bind.annotation.PathVariable;
  *
  */
 
-
-@FeignClient(value = "HelloWorldProvider",configuration = FeignClientConfig.class)
+@FeignClient(value = "HelloWorldZKProvider",configuration = FeignClientConfig.class)
 public interface HelloClient {
 
-	@GetMapping("/helloworld/provider/{name}")
-	public String hhhtest(@PathVariable("name") String name);
+	@GetMapping("/zk/provider")
+	public String HelloWorld(@RequestParam("name") String name);
+
+	@GetMapping("/zk/provider/sleep")
+	public String HelloWorldSleep(@RequestParam("name") String name);
+
 }

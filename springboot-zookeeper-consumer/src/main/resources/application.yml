@@ -13,3 +13,6 @@ logging:
   level:
     org.apache.zookeeper.ClientCnxn: WARN
     com.dwt.springbootzookeeperconsumer: info
+feign:
+  hystrix:
+    enabled: true

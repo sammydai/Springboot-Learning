@@ -1,12 +1,12 @@
-package com.dwt.springbootzookeeperconsumer.config;
+package com.learning.zkconsumer.config;
 
-import com.dwt.springbootzookeeperconsumer.logger.SMFeignLogger;
+import com.learning.zkconsumer.logger.SMFeignLogger;
 import feign.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Package: com.dwt.springbootzookeeperconsumer.config
+ * @Package: com.learning.zkconsumer.config
  * @Description:
  * @Author: Sammy
  * @Date: 2020/3/31 13:52

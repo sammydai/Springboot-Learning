@@ -1,4 +1,4 @@
-package com.dwt.springbootzookeeperconsumer.controller;
+package com.learning.zkconsumer.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * @Package: com.dwt.springbootzookeeperconsumer.controller
+ * @Package: com.learning.zkconsumer.controller
  * @Description:
  * @Author: Sammy
  * @Date: 2020/3/21 21:17
@@ -53,8 +53,6 @@ public class ZooController {
 	 * @Exception
 	 *
 	 */
-
-
 	@RequestMapping("/getServices/{serviceId}")
 	public String discoverClient(@PathVariable("serviceId") String serviceId){
 		List<ServiceInstance> instances = client.getInstances(serviceId);

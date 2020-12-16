@@ -1,13 +1,12 @@
-package com.dwt.springbootzookeeperconsumer.logger;
+package com.learning.zkconsumer.logger;
 
 /**
- * @Package: com.dwt.springbootzookeeperconsumer.logger
+ * @Package: com.learning.zkconsumer.logger
  * @Description:
  * @Author: Sammy
  * @Date: 2020/3/31 14:06
  */
 
-import feign.Feign;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
