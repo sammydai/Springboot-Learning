@@ -24,17 +24,16 @@
         <module>springboot-zookeeper-consumer</module>
         <module>springboot-datasource-test</module>
         <module>springboot-datasource-multi-test</module>
-        <module>springboot-datasource-druid</module>
+        <module>springboot-starbucks-demo</module>
         <module>springboot-datasource-druid-mysql</module>
         <module>springboot-transaction-manager</module>
-        <module>springboot-anotation</module>
         <module>springboot-jpa</module>
         <module>springboot-juc</module>
         <module>springboot-rabbitmq</module>
         <module>springboot-rabbitmq-advanced</module>
         <module>springboot-redis</module>
         <module>springboot-mybatis</module>
-        <module>springboot-jwt</module>
+        <module>springboot-aop</module>
         <module>springboot-io</module>
         <module>springboot-job-core</module>
         <module>springboot-jdk8</module>
@@ -46,7 +45,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring.boot.version>2.1.0.RELEASE</spring.boot.version>
+        <spring.boot.version>2.2.1.RELEASE</spring.boot.version>
         <hutool.version>5.0.0</hutool.version>
         <guava.version>28.1-jre</guava.version>
         <user.agent.version>1.20</user.agent.version>
