@@ -1,20 +1,19 @@
-server:
-  port: 8087
 spring:
   datasource:
     username: root
     password: kangta27
-    url:  jdbc:mysql://localhost:3306/springbootdb?characterEncoding=UTF-8
+    url:  jdbc:mysql://localhost:3306/testjava?characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  port: 8989
 
-management:
-  server:
-    port: 45679
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+logging:
+  level:
+    org.springframework.orm.jpa: debug
 
-
-user:
-  name: "defaultadminname"

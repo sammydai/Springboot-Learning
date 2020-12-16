@@ -22,7 +22,7 @@ public class SayController {
 	@Autowired
 	List<SayService> sayServiceList;
 
-	@GetMapping("test")
+	@GetMapping("testsay")
 	public void test() {
 		log.info("====================");
 		sayServiceList.forEach(SayService::say);
