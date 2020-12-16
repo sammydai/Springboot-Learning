@@ -96,23 +96,6 @@ class EqualUtils {
 		points.add(p12);
 		log.info("points.contains(p22) ? {}", points.contains(p22));
 	}
-
-
-	public static void wrong(){
-		List<Student> list = new ArrayList<>();
-		list.add(new Student(1, "zhang"));
-		list.add(new Student(2, "wang"));
-		Student student = new Student(2, "li");
-
-		log.info("ArrayList.indexOf");
-		int index1 = list.indexOf(student);
-		Collections.sort(list);
-		log.info("Collections.binarySearch");
-		int index2 = Collections.binarySearch(list, student);
-
-		log.info("index1 = " + index1);
-		log.info("index2 = " + index2);
-	}
 }
 
 
