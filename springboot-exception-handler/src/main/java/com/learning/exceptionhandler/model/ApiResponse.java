@@ -1,12 +1,11 @@
-package com.dwt.springbootexceptionhandler.model;
+package com.learning.exceptionhandler.model;
 
-import com.dwt.springbootexceptionhandler.constant.Status;
-import com.dwt.springbootexceptionhandler.exception.BaseException;
-import jdk.net.SocketFlow;
+import com.learning.exceptionhandler.constant.Status;
+import com.learning.exceptionhandler.exception.BaseException;
 import lombok.Data;
 
 /**
- * @Package: com.dwt.springbootexceptionhandler.model
+ * @Package: com.dwt.springbootexceptionhandler.domain
  * @Description:
  * @Author: Sammy
  * @Date: 2020/2/8 01:44

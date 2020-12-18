@@ -1,6 +1,6 @@
-package com.dwt.springbootexceptionhandler.exception;
+package com.learning.exceptionhandler.exception;
 
-import com.dwt.springbootexceptionhandler.constant.Status;
+import com.learning.exceptionhandler.constant.Status;
 import lombok.Getter;
 
 /**

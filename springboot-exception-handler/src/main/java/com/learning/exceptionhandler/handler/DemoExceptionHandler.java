@@ -1,8 +1,8 @@
-package com.dwt.springbootexceptionhandler.handler;
+package com.learning.exceptionhandler.handler;
 
-import com.dwt.springbootexceptionhandler.exception.JsonException;
-import com.dwt.springbootexceptionhandler.exception.PageException;
-import com.dwt.springbootexceptionhandler.model.ApiResponse;
+import com.learning.exceptionhandler.exception.JsonException;
+import com.learning.exceptionhandler.exception.PageException;
+import com.learning.exceptionhandler.model.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,13 +1,13 @@
-package com.dwt.springbootexceptionhandler;
+package com.learning.exceptionhandler;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringbootExceptionHandlerApplication {
+public class ExceptionHandlerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringbootExceptionHandlerApplication.class, args);
+		SpringApplication.run(ExceptionHandlerApplication.class, args);
 	}
 
 }

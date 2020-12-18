@@ -1,4 +1,4 @@
-package com.dwt.springbootexceptionhandler.constant;
+package com.learning.exceptionhandler.constant;
 
 import lombok.Getter;
 
