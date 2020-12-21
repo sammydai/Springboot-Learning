@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @Package: com.learning.aop.service
+ * @Package: com.learning.aop.templatemethod
  * @Description: User Repository 整合JPA数据源的操作
  * @Author: Sammy
  * @Date: 2020/12/2 09:53
