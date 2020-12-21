@@ -37,6 +37,7 @@
         <module>springboot-io</module>
         <module>springboot-jdk8</module>
         <module>springboot-xxljob-test</module>
+        <module>springboot-pattern</module>
 
     </modules>
 
