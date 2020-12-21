@@ -3,7 +3,7 @@ package com.learning.exceptionhandler.service;
 import com.learning.exceptionhandler.exception.BusinessException;
 
 /**
- * @Package: com.learning.exceptionhandler.service
+ * @Package: com.learning.exceptionhandler.templatemethod
  * @Description: Exceptions
  * @Author: Sammy
  * @Date: 2020/12/18 10:49
