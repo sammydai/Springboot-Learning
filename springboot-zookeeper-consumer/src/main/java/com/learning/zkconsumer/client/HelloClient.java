@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @Date: 2020/3/21 20:19
  */
 /**
- * @description 通过引入spring-cloud-starter-openfeign组件包使用声明式服务调用方式调用远程服务，使用@FeignClient（“service-name”）注解一个接口并将它自动连接到我们的应用程序中，以便我们以编程方式访问此服务。
+ * @description 通过引入spring-cloud-starter-openfeign组件包使用声明式服务调用方式调用远程服务，使用@FeignClient（“templatemethod-name”）注解一个接口并将它自动连接到我们的应用程序中，以便我们以编程方式访问此服务。
  * @Exception
  *
  */

@@ -1,6 +1,7 @@
 package com.learning.pattern.controller;
 
 import com.learning.pattern.reflection.BankService;
+import com.learning.pattern.reflection.BetterBankService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,9 +38,9 @@ public class ReflectionController {
 
 	}
 
-	// @GetMapping("right")
-	// public void right() throws IOException {
-	//     BetterBankService.createUser("zhuye", "xxxxxxxxxxxxxxxxxx", "13612345678", 36);
-	//     BetterBankService.pay(1234L, new BigDecimal("100.5"));
-	// }
+	@GetMapping("right")
+	public void right() throws IOException {
+	    BetterBankService.createUser("zhuye", "xxxxxxxxxxxxxxxxxx", "13612345678", 36);
+	    BetterBankService.pay(1234L, new BigDecimal("100.5"));
+	}
 }
