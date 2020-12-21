@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @Package: com.dwt.springbootmybatis.service
+ * @Package: com.learning.mybatis.service
  * @Description: UserService 服务接口
  * @Author: Sammy
  * @Date: 2020/9/23 10:10
