@@ -43,3 +43,15 @@ spring:
 #  jackson:
 #    serialization:
 #      write_enums_using_index: true
+management:
+  server:
+    port: 45679
+  # 设置端点暴露的哪些内容，默认["health","info"]，设置"*"代表暴露所有可访问的端点
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: "/admin"
+  endpoint:
+    health:
+      show-details: always
