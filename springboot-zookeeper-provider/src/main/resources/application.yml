@@ -5,7 +5,9 @@ spring:
     zookeeper:
       discovery:
         enabled: true
+        prefer-ip-address: true
       connect-string: localhost:2181
+
 
 server:
   port: 8099
