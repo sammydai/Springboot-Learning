@@ -1,6 +1,7 @@
 package com.learning.zkconsumer.client;
 
 import com.learning.zkconsumer.config.FeignClientConfig;
+import com.learning.zkconsumer.hystrix.HystrixClientFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  */
 
-@FeignClient(value = "HelloWorldZKProvider",configuration = FeignClientConfig.class)
+@FeignClient(value = "HelloWorldZKProvider",configuration = FeignClientConfig.class,fallback = HystrixClientFallback.class)
 public interface HelloClient {
 
 	@GetMapping("/zk/provider")

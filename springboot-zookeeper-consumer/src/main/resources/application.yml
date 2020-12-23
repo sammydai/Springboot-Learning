@@ -16,3 +16,15 @@ logging:
 feign:
   hystrix:
     enabled: true
+ribbon:
+  http:
+    client:
+      enabled: true
+  OkToRetryOnAllOperations: true #对所有操作请求都进行重试,默认false
+  ReadTimeout: 50000   #负载均衡超时时间，默认值5000
+  ConnectTimeout: 50000 #请求连接的超时时间，默认值2000
+  MaxAutoRetries: 1    #对当前实例的重试次数，默认0
+  MaxAutoRetriesNextServer: 0 #重试切换实例的次数，默认1
+
+
+
