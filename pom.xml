@@ -39,6 +39,7 @@
         <module>springboot-xxljob-test</module>
         <module>springboot-pattern</module>
         <module>springboot-apidesign</module>
+        <module>springboot-security</module>
     </modules>
 
     <properties>
