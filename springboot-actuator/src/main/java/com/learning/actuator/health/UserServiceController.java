@@ -25,7 +25,8 @@ public class UserServiceController {
 		if (ThreadLocalRandom.current().nextInt() % 2 == 0) {
 			return new User(id, "name" + id);
 		} else {
-			throw new RuntimeException("error");
+			// throw new RuntimeException("error");
+			return new User(id, "name" + id);
 		}
 	}
 
