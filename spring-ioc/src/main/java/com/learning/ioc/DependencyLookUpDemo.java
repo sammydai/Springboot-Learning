@@ -8,7 +8,6 @@ import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
-import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Map;
@@ -81,4 +80,6 @@ public class DependencyLookUpDemo {
 	private static void run() {
 		System.out.println("执行钩子函数");
 	}
+
+
 }

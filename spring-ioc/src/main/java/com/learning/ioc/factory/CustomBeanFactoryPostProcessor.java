@@ -20,6 +20,7 @@ public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor,
 		Iterator<String> beanNamesIterator = beanFactory.getBeanNamesIterator();
 		String[] names = beanFactory.getBeanDefinitionNames();
 		for (int i = 0; i < names.length; i++) {
+			// String name = names[i];
 			String name = names[i];
 			BeanDefinition bd = beanFactory.getBeanDefinition(name);
 			System.out.println(name + " bean property " + bd.getPropertyValues().toString());
