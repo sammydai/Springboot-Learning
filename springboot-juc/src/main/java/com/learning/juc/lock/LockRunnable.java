@@ -50,7 +50,6 @@ public class LockRunnable implements Runnable {
 				e.printStackTrace();
 			}
 			System.out.println(Thread.currentThread().getName() + "拿到信号");
-
 			reentrantLock.unlock();
 		}, "线程1").start();
 
@@ -63,8 +62,6 @@ public class LockRunnable implements Runnable {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-
-
 			System.out.println(Thread.currentThread().getName() + "发出信号");
 			condition.signalAll();
 			reentrantLock.unlock();

@@ -5,6 +5,9 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 /**
  * @Package: com.learning.juc.utils;
  * @Description:
+ * 1、读锁可以并行，写锁是独占锁，必须等写锁释放了，才可进行读锁
+ * 2、读锁升级为写锁(失败)
+ * 3、写锁降级为读锁(成功)
  * @Author: Sammy
  * @Date: 2020/10/25 10:53
  */
@@ -80,35 +83,43 @@ public class ReentrantReadWriteLockTest {
     }
 
 
-     public static void main(String[] args) {
+    /**
+     * 读锁可以同时获得
+     * 写锁必须，获得释放，再获得释放
+     * @param args
+     */
+     public void modeA(String[] args) {
         new Thread(() -> read(), "Thread1").start();
         new Thread(() -> read(), "Thread2").start();
         new Thread(() -> write(), "Thread3").start();
         new Thread(() -> write(), "Thread4").start();
     }
 
-    // public static void main(String[] args) {
-	 //    //读锁可以并行，写锁是独占锁，必须等写锁释放了，才可进行读锁
-    //     new Thread(() -> write(), "Thread1").start();
-    //     new Thread(() -> read(), "Thread2").start();
-    //     new Thread(() -> read(), "Thread3").start();
-    //     new Thread(() -> write(), "Thread4").start();
-    //     new Thread(() -> read(), "Thread5").start();
-    //     new Thread(() -> {
-    //         Thread[] threads = new Thread[100];
-    //         for (int i = 0; i < 100; i++) {
-    //             threads[i] = new Thread(() -> read(), "子线程创建的Thread" + i);
-    //         }
-    //         for (int i = 0; i < 100; i++) {
-    //             threads[i].start();
-    //         }
-    //     }).start();
-    // }
+    /**
+     * 读锁可以并行，写锁是独占锁，必须等写锁释放了，才可进行读锁
+     * @param args
+     */
+    public  void modeB(String[] args) {
+        new Thread(() -> write(), "Thread1").start();
+        new Thread(() -> read(), "Thread2").start();
+        new Thread(() -> read(), "Thread3").start();
+        new Thread(() -> write(), "Thread4").start();
+        new Thread(() -> read(), "Thread5").start();
+        new Thread(() -> {
+            Thread[] threads = new Thread[100];
+            for (int i = 0; i < 100; i++) {
+                threads[i] = new Thread(() -> read(), "子线程创建的Thread" + i);
+            }
+            for (int i = 0; i < 100; i++) {
+                threads[i].start();
+            }
+        }).start();
+    }
 
-    //  public static void main(String[] args) {
-    //     new Thread(() -> write1(), "Thread1").start();
-    //     new Thread(() -> read1(), "Thread2").start();
-    // }
+     public static void main(String[] args) {
+        new Thread(() -> write1(), "Thread1").start();
+        new Thread(() -> read1(), "Thread2").start();
+    }
 
 
 

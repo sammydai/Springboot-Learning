@@ -6,7 +6,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.aspectj.SpringConfiguredConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 
 @RunWith(SpringRunner.class)
@@ -22,6 +26,13 @@ public class HelloWorldApplicationTests {
         System.out.println("people = " + people);
         System.out.println("= = = = = = = = = = = = = ");
         People bean = ApplicationContextUtils.getBean(People.class);
-
     }
+
+    @Test
+	public void test2(){
+		// AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfigu);
+		// context.publishEvent(new ApplicationEvent(new String("我发布的事件")){
+		// });
+		// context.close();
+	}
 }

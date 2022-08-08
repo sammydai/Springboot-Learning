@@ -1,12 +1,10 @@
 package com.learning.helloworld;
 
 import cn.hutool.core.util.StrUtil;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.learning.helloworld.config.ServerConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

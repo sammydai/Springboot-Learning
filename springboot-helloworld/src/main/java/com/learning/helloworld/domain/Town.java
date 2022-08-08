@@ -19,4 +19,5 @@ public class Town extends City {
 		super(cityName, cityCode);
 		this.townname = townname;
 	}
+
 }
