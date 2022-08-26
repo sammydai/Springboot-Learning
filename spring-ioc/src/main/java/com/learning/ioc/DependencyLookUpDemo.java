@@ -8,6 +8,7 @@ import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Map;
@@ -22,6 +23,7 @@ import static java.lang.System.out;
  */
 
 public class DependencyLookUpDemo {
+
 	public static void main(String[] args) {
 		BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-lookup-context.xml");
 		System.out.println("=============================");
@@ -39,21 +41,21 @@ public class DependencyLookUpDemo {
 				.addPropertyValue("name", "sammy")
 				.getBeanDefinition();
 		//bean Definition 并非最终态，可自定义修改
-
 		//验证bean definition: AbstractBeanDefinition派生方法
 		GenericBeanDefinition genericBeanDefinition = new GenericBeanDefinition();
 		genericBeanDefinition.setBeanClass(User.class);
 		MutablePropertyValues propertyvalues = new MutablePropertyValues();
 		propertyvalues.addPropertyValue("id", 1L);
-		propertyvalues.addPropertyValue("name","sssssm");
+		propertyvalues.addPropertyValue("name", "sssssm");
 		genericBeanDefinition.setPropertyValues(propertyvalues);
 
-		// lookupByType(beanFactory);
-		// lookupCollectionByType(beanFactory);
-		// lookupByAnnotationType(beanFactory);
-		// AbstractApplicationContext context = (AbstractApplicationContext) beanFactory;
-		// context.registerShutdownHook();
-		// Runtime.getRuntime().addShutdownHook(new Thread(DependencyLookUpDemo::run));
+		lookupByType(beanFactory);
+		lookupCollectionByType(beanFactory);
+		lookupByAnnotationType(beanFactory);
+		AbstractApplicationContext context = (AbstractApplicationContext) beanFactory;
+		//添加钩子函数
+		context.registerShutdownHook();
+		Runtime.getRuntime().addShutdownHook(new Thread(DependencyLookUpDemo::run));
 	}
 
 	private static void lookupByAnnotationType(BeanFactory beanFactory) {

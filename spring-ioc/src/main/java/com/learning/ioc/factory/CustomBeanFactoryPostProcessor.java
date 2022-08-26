@@ -23,18 +23,22 @@ public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor,
 			// String name = names[i];
 			String name = names[i];
 			BeanDefinition bd = beanFactory.getBeanDefinition(name);
+			System.out.println("");
 			System.out.println(name + " bean property " + bd.getPropertyValues().toString());
+			System.out.println("===结束===");
 		}
 	}
 
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+		System.out.println();
 		System.out.println(String.format("Bean初始化前,bean:%s,beanName:%s", bean.toString(), beanName));
 		return bean;
 	}
 
 	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+		System.out.println();
 		System.out.println(String.format("Bean初始化后,bean:%s,beanName:%s", bean.toString(), beanName));
 		return bean;
 	}
