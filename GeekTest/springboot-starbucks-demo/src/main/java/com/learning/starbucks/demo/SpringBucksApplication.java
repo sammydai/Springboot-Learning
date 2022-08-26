@@ -2,10 +2,7 @@ package com.learning.starbucks.demo;
 
 import com.learning.starbucks.demo.service.CoffeeService;
 import lombok.extern.slf4j.Slf4j;
-import org.joda.money.CurrencyUnit;
-import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,12 +11,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
-import sun.tools.jar.CommandLine;
-
-import java.util.Map;
 
 /**
  * @Package: com.learning.starbucks.demo
