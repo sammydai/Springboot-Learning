@@ -1,8 +1,8 @@
 package com.learning.aop.controller;
 
 import com.learning.aop.annotation.Metrics;
-import com.learning.aop.service.UserEntity;
-import com.learning.aop.service.UserService;
+import com.learning.aop.repository.UserEntity;
+import com.learning.aop.repository.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

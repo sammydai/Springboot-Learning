@@ -16,6 +16,10 @@ public class Person implements Serializable {
 		this.city = city;
 	}
 
+	public void printsth(){
+		System.out.println("Print方法：" + this);
+	}
+
 	@Override
 	public String toString() {
 		return "Person{" +

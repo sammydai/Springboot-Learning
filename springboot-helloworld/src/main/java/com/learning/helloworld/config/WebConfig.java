@@ -4,6 +4,7 @@ import cn.hutool.core.util.PageUtil;
 import com.learning.helloworld.filter.MyFilter;
 import com.learning.helloworld.filter.MyHttpSessionListener;
 import com.learning.helloworld.filter.MyInterceptor;
+import com.learning.helloworld.filter.MyInterceptor2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
@@ -27,9 +28,13 @@ public class WebConfig implements WebMvcConfigurer{
 	@Autowired
 	private MyInterceptor myInterceptor;
 
+	@Autowired
+	private MyInterceptor2 myInterceptor2;
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(myInterceptor);
+		registry.addInterceptor(myInterceptor2).addPathPatterns("/abc", "/configMatch");
 	}
 
 	@Bean
