@@ -1,4 +1,4 @@
-package com.learning.aop.service;
+package com.learning.aop.repository;
 
 import com.learning.aop.annotation.Metrics;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.learning.aop.service;
+package com.learning.aop.repository;
 
 import lombok.Data;
 

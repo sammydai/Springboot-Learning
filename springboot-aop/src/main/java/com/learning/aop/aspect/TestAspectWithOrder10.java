@@ -1,4 +1,4 @@
-package com.learning.aop.service;
+package com.learning.aop.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;

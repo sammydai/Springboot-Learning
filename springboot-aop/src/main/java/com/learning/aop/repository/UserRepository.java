@@ -1,4 +1,4 @@
-package com.learning.aop.service;
+package com.learning.aop.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
