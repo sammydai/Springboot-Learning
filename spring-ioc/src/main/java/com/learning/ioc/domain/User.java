@@ -35,11 +35,13 @@ public class User implements BeanNameAware,BeanFactoryAware,ApplicationContextAw
 
 	private Company company;
 
-    private Properties context;
+	private Properties context;
 
-    private String contextAsText;
+	private String contextAsText;
 
-    private transient String beanName;
+	private transient String beanName;
+
+	private transient ApplicationContext applicationContext;
 
 	public String getBeanName() {
 		return beanName;
@@ -117,6 +119,10 @@ public class User implements BeanNameAware,BeanFactoryAware,ApplicationContextAw
 		this.contextAsText = contextAsText;
 	}
 
+	public ApplicationContext getApplicationContext() {
+		return applicationContext;
+	}
+
 	@Override
 	public String toString() {
 		return "User{" +
@@ -134,22 +140,23 @@ public class User implements BeanNameAware,BeanFactoryAware,ApplicationContextAw
 
 	@Override
 	public void setBeanName(String name) {
-		System.out.println("BeanNameAware.setBeanName()" + "--->BeanName:" + name);
+		System.out.println("1【User初始化过程】BeanNameAware.setBeanName()" + "--->BeanName:" + name);
 	}
 
 	@Override
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-		System.out.println("BeanFactoryAware.setBeanFactory()");
+		System.out.println("2【User初始化过程】BeanFactoryAware.setBeanFactory()");
 	}
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		System.out.println("执行InitializingBean.afterPropertiesSet()");
+		System.out.println("3【User初始化过程】执行InitializingBean.afterPropertiesSet()");
 	}
 
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		System.out.println("ApplicationContextAware.setApplicationContext()");
+		// this.applicationContext = applicationContext;
+		System.out.println("4【User初始化过程】ApplicationContextAware.setApplicationContext()");
 	}
 
 	@Override
@@ -158,9 +165,9 @@ public class User implements BeanNameAware,BeanFactoryAware,ApplicationContextAw
 	}
 
 	@PostConstruct
-    public void postContruct() {
-        System.out.println("执行@PostConstruct方法");
-    }
+	public void postConstruct() {
+		System.out.println("执行@PostConstruct方法");
+	}
 
     @PreDestroy
     public void preDestroy() {

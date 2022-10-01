@@ -16,16 +16,14 @@ public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor,
 
 	@Override
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-		System.out.println("调用了自定义的BeanFactoryPostProcessor " + beanFactory);
+		System.out.println("0【PostProcessor过程】调用了自定义的BeanFactoryPostProcessor " + beanFactory);
 		Iterator<String> beanNamesIterator = beanFactory.getBeanNamesIterator();
 		String[] names = beanFactory.getBeanDefinitionNames();
 		for (int i = 0; i < names.length; i++) {
-			// String name = names[i];
 			String name = names[i];
 			BeanDefinition bd = beanFactory.getBeanDefinition(name);
 			System.out.println("");
 			System.out.println(name + " bean property " + bd.getPropertyValues().toString());
-			System.out.println("===结束===");
 		}
 	}
 
