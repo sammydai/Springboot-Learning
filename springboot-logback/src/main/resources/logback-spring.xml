@@ -115,7 +115,7 @@
         一个日志信息能不能输出，主要看有没有吐出到appender中 -->
     <!-- 一个logger 看它所属的appender到底是谁，就能判断是否多次输出 -->
 
-    <logger name="com.dwt.springbootlogback" additivity="true">
+    <logger name="com.learning.logback" additivity="true">
         <appender-ref ref="FILE_INFO"/>
         <appender-ref ref="FILE_ERROR"/>
     </logger>
@@ -123,8 +123,8 @@
 
     <root level="info">
         <appender-ref ref="CONSOLE"/>
-        <!--<appender-ref ref="FILE_INFO"/>-->
-        <!--<appender-ref ref="FILE_ERROR"/>-->
+        <appender-ref ref="FILE_INFO"/>
+        <appender-ref ref="FILE_ERROR"/>
     </root>
 
 </configuration>
