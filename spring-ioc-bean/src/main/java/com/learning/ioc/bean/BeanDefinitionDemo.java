@@ -53,6 +53,8 @@ public class BeanDefinitionDemo {
 	}
 		@Component
 		public static class Config {
+			//name属性设置多个值且不设置id属性，那么第一个被用作标识符，其他的被视为别名。
+			// 如果设置了id，那么name的所有值都是别名。
 			@Bean(name = {"user", "sammyfight-user"})
 			public User user() {
 				User user = new User();
