@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.dwt</groupId>
 		<artifactId>spring-boot-learning</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>springboot-async</artifactId>

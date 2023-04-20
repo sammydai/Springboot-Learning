@@ -6,7 +6,7 @@
 
     <groupId>com.dwt</groupId>
     <artifactId>spring-boot-learning</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <name>springboot-learning</name>
 
@@ -40,6 +40,8 @@
         <module>springboot-flowable</module>
         <module>spring-ioc</module>
         <module>spring-nio</module>
+        <module>springboot-datasource-test</module>
+        <module>springboot-starbucks-demo</module>
     </modules>
 
     <properties>
@@ -50,6 +52,7 @@
         <hutool.version>5.0.0</hutool.version>
         <guava.version>28.1-jre</guava.version>
         <user.agent.version>1.20</user.agent.version>
+        <revision>3.0.0</revision>
     </properties>
 
     <!-- 定义SpringCloud版本 -->
@@ -110,6 +113,37 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.dwt</groupId>
+                <artifactId>springboot-helloworld</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!--            <dependency>-->
+            <!--                <groupId>com.dwt</groupId>-->
+            <!--                <artifactId>springboot-mybatis</artifactId>-->
+            <!--                <version>${project.version}</version>-->
+            <!--            </dependency>-->
+
+            <!--            <dependency>-->
+            <!--                <groupId>com.dwt</groupId>-->
+            <!--                <artifactId>springboot-datasource-druid-mysql</artifactId>-->
+            <!--                <version>${project.version}</version>-->
+            <!--            </dependency>-->
+
+            <!--            <dependency>-->
+            <!--                <groupId>com.dwt</groupId>-->
+            <!--                <artifactId>springboot-jpa</artifactId>-->
+            <!--                <version>${project.version}</version>-->
+            <!--            </dependency>-->
+
         </dependencies>
     </dependencyManagement>
 
@@ -146,6 +180,33 @@
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>2.8.2</version>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>flatten-maven-plugin</artifactId>
+                    <version>1.2.7</version>
+                    <configuration>
+                        <!--<updatePomFile>true</updatePomFile>-->
+                        <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>flatten</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>flatten</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>flatten.clean</id>
+                            <phase>clean</phase>
+                            <goals>
+                                <goal>clean</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>

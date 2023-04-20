@@ -11,7 +11,7 @@ import java.lang.reflect.Proxy;
  * @Date: 2022/8/26 22:11
  */
 
-public class Test {
+public class TestDemo {
 	public static void main(String[] args) {
 		AService as = new AServiceImpl();
 		AService proxy = (AService) Proxy.newProxyInstance(as.getClass().getClassLoader(), as.getClass().getInterfaces(), new InvocationHandler() {

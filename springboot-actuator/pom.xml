@@ -5,11 +5,10 @@
 	<parent>
 		<groupId>com.dwt</groupId>
 		<artifactId>spring-boot-learning</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>springboot-actuator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>springboot-actuator</name>

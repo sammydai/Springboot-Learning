@@ -5,11 +5,11 @@
 	<parent>
 		<groupId>com.dwt</groupId>
 		<artifactId>spring-boot-learning</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>springboot-task-quartz</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${revision}</version>
 	<packaging>jar</packaging>
 
 	<name>springboot-task-quartz</name>

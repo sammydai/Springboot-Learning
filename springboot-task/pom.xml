@@ -6,15 +6,13 @@
 	<parent>
 		<groupId>com.dwt</groupId>
 		<artifactId>spring-boot-learning</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
 
 	<artifactId>springboot-task</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>springboot-task</name>
-	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

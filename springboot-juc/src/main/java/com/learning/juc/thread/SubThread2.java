@@ -1,10 +1,8 @@
 package com.learning.juc.thread;
 
-import javax.xml.transform.Templates;
-
 /**
  * @Package: com.learning.juc.thread
- * @Description: SubThread
+ * @Description: SubThread 创建一个线程
  * @Author: Sammy
  * @Date: 2021/10/30 22:51
  */

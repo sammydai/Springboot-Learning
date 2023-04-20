@@ -1,7 +1,10 @@
 package com.learning.juc.utils;
 
 import java.util.Random;
-import java.util.concurrent.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * @Package: com.learning.juc.utils;
@@ -14,21 +17,22 @@ import java.util.concurrent.*;
  * 多个线程等待一个线程
  */
 public class CountDownLatchDemo {
-	private static ExecutorService executorService = Executors.newCachedThreadPool();
-	private static CountDownLatch countDownLatch = new CountDownLatch(5);
+	private static final ExecutorService executorService = Executors.newCachedThreadPool();
+	private static final CountDownLatch countDownLatch = new CountDownLatch(5);
 
-	private static CyclicBarrier cyclicBarrier = new CyclicBarrier(5, () -> System.out.println("所有运动员都到位了，比赛开始！"));
-	private static Integer count = 0;
+	private static final CyclicBarrier cyclicBarrier = new CyclicBarrier(5, () -> System.out.println("所有运动员都到位了，比赛开始！"));
+
+	private static final Integer count = 0;
 
 	public static void main(String[] args) throws Exception {
-		// new CountDownLatchDemo().waitMultiThread();
+		new CountDownLatchDemo().waitMultiThread();
 		// new CountDownLatchDemo().waitOneThread();
 		// new CountDownLatchDemo().waitOneThread1();
-		for (int i = 0; i < 5; i++) {
-			executorService.submit(new Athlete(countDownLatch,cyclicBarrier,i));
-		}
-		countDownLatch.await();
-		System.out.println("下一个环节"+countDownLatch.getCount());
+		// for (int i = 0; i < 5; i++) {
+		// 	executorService.submit(new Athlete(countDownLatch,cyclicBarrier,i));
+		// }
+		// countDownLatch.await();
+		// System.out.println("下一个环节"+countDownLatch.getCount());
 	}
 
 	public void waitOneThread(){
