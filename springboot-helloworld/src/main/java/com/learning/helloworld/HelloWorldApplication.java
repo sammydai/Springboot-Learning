@@ -20,6 +20,7 @@ public class HelloWorldApplication {
 	private ServerConfig serverConfig;
 
 	public static void main(String[] args) throws Exception {
+
 		SpringApplication.run(HelloWorldApplication.class, args);
 		// SpringApplication sa = new SpringApplication(HelloWorldApplication.class);
 		// sa.run(args);
