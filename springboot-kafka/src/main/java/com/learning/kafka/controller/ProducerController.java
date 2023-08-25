@@ -3,6 +3,7 @@ package com.learning.kafka.controller;
 import com.learning.kafka.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class ProducerController {
 
+	@Autowired
+	private ApplicationContext applicationContext;
+
 	private static final String TOPIC = "quickstart-events";
 
 	@Autowired
@@ -30,4 +34,5 @@ public class ProducerController {
 		log.info("send a message to kafka");
 		return "Published Successfully";
 	}
+
 }

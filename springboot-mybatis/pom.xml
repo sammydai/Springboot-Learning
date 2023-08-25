@@ -57,10 +57,10 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.dwt</groupId>
-            <artifactId>springboot-helloworld</artifactId>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.dwt</groupId>-->
+        <!--            <artifactId>springboot-helloworld</artifactId>-->
+        <!--        </dependency>-->
 
     </dependencies>
 

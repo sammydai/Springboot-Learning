@@ -39,9 +39,11 @@
         <module>springboot-security</module>
         <module>springboot-flowable</module>
         <module>spring-ioc</module>
-        <module>spring-nio</module>
         <module>springboot-datasource-test</module>
         <module>springboot-starbucks-demo</module>
+        <module>spring-nio</module>
+        <module>springboot-kafka</module>
+        <module>springboot-starter</module>
     </modules>
 
     <properties>
@@ -120,11 +122,11 @@
                 <version>0.8.2</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.dwt</groupId>
-                <artifactId>springboot-helloworld</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+            <!--            <dependency>-->
+            <!--                <groupId>com.dwt</groupId>-->
+            <!--                <artifactId>springboot-helloworld</artifactId>-->
+            <!--                <version>${revision}</version>-->
+            <!--            </dependency>-->
 
             <!--            <dependency>-->
             <!--                <groupId>com.dwt</groupId>-->
@@ -148,7 +150,7 @@
     </dependencyManagement>
 
     <build>
-        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+        <!--        <pluginManagement>&lt;!&ndash; lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) &ndash;&gt;-->
             <plugins>
                 <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
                 <plugin>
@@ -184,11 +186,6 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>flatten-maven-plugin</artifactId>
-                    <version>1.2.7</version>
-                    <configuration>
-                        <!--<updatePomFile>true</updatePomFile>-->
-                        <flattenMode>resolveCiFriendliesOnly</flattenMode>
-                    </configuration>
                     <executions>
                         <execution>
                             <id>flatten</id>
@@ -196,6 +193,10 @@
                             <goals>
                                 <goal>flatten</goal>
                             </goals>
+                            <configuration>
+                                <updatePomFile>true</updatePomFile>
+                                <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                            </configuration>
                         </execution>
                         <execution>
                             <id>flatten.clean</id>
@@ -205,6 +206,11 @@
                             </goals>
                         </execution>
                     </executions>
+                    <inherited>true</inherited>
+                    <configuration>
+                        <updatePomFile>true</updatePomFile>
+                        <flattenMode>resolveCiFriendliesOnly</flattenMode>
+                    </configuration>
                 </plugin>
 
                 <plugin>
@@ -220,6 +226,6 @@
                     </executions>
                 </plugin>
             </plugins>
-        </pluginManagement>
+        <!--        </pluginManagement>-->
     </build>
 </project>
