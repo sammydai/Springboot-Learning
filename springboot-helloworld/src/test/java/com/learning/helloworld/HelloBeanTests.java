@@ -2,6 +2,7 @@ package com.learning.helloworld;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Test;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -43,5 +44,15 @@ public class HelloBeanTests {
 		String bar() {
 			return "OK";
 		}
+	}
+
+	@Test
+	public void testinteger() {
+		Integer i = 56;
+		Integer j = 56;
+		Integer k = 129;
+		Integer v = 129;
+		System.out.println(i == j);
+		System.out.println(k == v);
 	}
 }

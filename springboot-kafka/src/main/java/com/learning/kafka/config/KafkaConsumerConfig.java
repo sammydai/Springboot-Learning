@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * [一句话描述该类的功能]
+ * KafkaConsumerConfig
  *
  * @author : [Sammy]
  * @version : [v1.0]

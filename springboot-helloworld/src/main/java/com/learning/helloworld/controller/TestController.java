@@ -25,6 +25,7 @@ public class TestController {
 	@Autowired
 	private ApplicationContext applicationContext;
 
+
 	@GetMapping("addSession")
 	public String addSession(HttpServletRequest request) {
 		HttpSession session = request.getSession();

@@ -1,0 +1,65 @@
+package com.learning.juc.workthread;
+
+/**
+ * Channel
+ *
+ * @author : [Sammy]
+ * @version : [v1.0]
+ * @createTime : [2023/9/25 13:55]
+ */
+public class Channel {
+	private static final int MAX_REQUEST = 100;
+
+	private final Request[] requestQueue;
+
+	private int tail;  // 下次putRequest的位置
+	private int head;  // 下次takeRequest的位置
+	private int count; // Request的数量
+
+	private final WorkerThread[] threadPool;
+
+	public Channel(int threads) {
+		this.requestQueue = new Request[MAX_REQUEST];
+		this.head = 0;
+		this.tail = 0;
+		this.count = 0;
+		this.threadPool = new WorkerThread[threads];
+		for (int i = 0; i < threadPool.length; i++) {
+			threadPool[i] = new WorkerThread("Worker-" + i, this);
+		}
+	}
+
+	public void startWorkers() {
+		for (int i = 0; i < threadPool.length; i++) {
+			threadPool[i].start();
+		}
+	}
+
+	public synchronized void putRequest(Request request) {
+		while (count >= requestQueue.length) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		requestQueue[tail] = request;
+		tail = (tail + 1) % requestQueue.length;
+		count++;
+		notifyAll();
+	}
+
+	public synchronized Request takeRequest() {
+		while (count <= 0) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+			}
+		}
+		Request request = requestQueue[head];
+		head = (head + 1) % requestQueue.length;
+		count--;
+		notifyAll();
+		return request;
+	}
+}

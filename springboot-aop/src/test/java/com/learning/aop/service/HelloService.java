@@ -1,4 +1,4 @@
-package aop;
+package com.learning.aop.service;
 
 /**
  * @Package: com.learning.ioc.aop
@@ -7,6 +7,6 @@ package aop;
  * @Date: 2022/8/26 15:52
  */
 
-public interface AService {
-	void a();
+public interface HelloService {
+	void doSomething();
 }

@@ -22,6 +22,7 @@
         <module>springboot-file-upload</module>
         <module>springboot-zookeeper-provider</module>
         <module>springboot-zookeeper-consumer</module>
+        <module>springboot-zookeeper-key</module>
         <module>springboot-datasource-multi-test</module>
         <module>springboot-datasource-druid-mysql</module>
         <module>springboot-transaction-manager</module>

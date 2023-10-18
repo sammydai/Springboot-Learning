@@ -1,7 +1,7 @@
 package com.learning.aop.handler;
 
 /**
- * [一句话描述该类的功能]
+ * 代理handler
  *
  * @author : [Sammy]
  * @version : [v1.0]
