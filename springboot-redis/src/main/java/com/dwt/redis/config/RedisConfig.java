@@ -16,7 +16,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-import java.time.temporal.Temporal;
+import java.time.Duration;
 
 /**
  * @Package: com.dwt.redis.config
@@ -32,22 +32,30 @@ public class RedisConfig extends CachingConfigurerSupport {
 	public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
 		RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
 		redisTemplate.setConnectionFactory(redisConnectionFactory);
-		Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+
 		ObjectMapper om = new ObjectMapper();
+		//ALL指定要序列化的域，点进去看源码可以发现有get set等
+		// ANY是包括private和public
 		om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+		//指定序列化输入的类型，类必须是非final，final修饰的类型会报异常
 		om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
-		jackson2JsonRedisSerializer.setObjectMapper(om);
+		// key序列化
 		redisTemplate.setKeySerializer(new StringRedisSerializer());
-		redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
 		redisTemplate.setHashKeySerializer(new StringRedisSerializer());
+		// value序列化
+		// GenericJackson2JsonRedisSerializer jsonRedisSerializer = new GenericJackson2JsonRedisSerializer();
+		Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+		jackson2JsonRedisSerializer.setObjectMapper(om);
+		redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
 		redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
+
 		redisTemplate.afterPropertiesSet();
 		return redisTemplate;
 	}
 
 	@Bean
 	public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
-		RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig().entryTtl(null);
+		RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofDays(1));
 		return RedisCacheManager.builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory)).build();
 	}
 

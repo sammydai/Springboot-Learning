@@ -1,0 +1,6 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    template:
+      defaultSerializer: org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer
