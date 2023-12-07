@@ -1,13 +1,14 @@
 package com.dwt.redis.controller;
 
 import com.dwt.redis.entity.Company;
-import com.dwt.redis.service.RedisService;
+import com.dwt.redis.service.RedisServiceAnno;
+import com.dwt.redis.service.RedisServiceTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * [一句话描述该类的功能]
+ * 缓存验证类
  *
  * @author : [Sammy]
  * @version : [v1.0]
@@ -18,25 +19,43 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/redis")
 public class CompanyController {
 
-	final RedisService redisService;
+	final RedisServiceAnno redisServiceAnno;
+
+	final RedisServiceTemplate redisServiceTemplate;
 
 	@Autowired
-	public CompanyController(RedisService redisService) {
-		this.redisService = redisService;
+	public CompanyController(RedisServiceAnno redisService, RedisServiceTemplate redisServiceTemplate) {
+		this.redisServiceAnno = redisService;
+		this.redisServiceTemplate = redisServiceTemplate;
+	}
+
+	@PostMapping("/query")
+	public String queryCompany(@RequestParam String id) {
+		return redisServiceAnno.addUser(id);
 	}
 
 	@PostMapping("/add")
-	public String addCompany(String id) {
-		return redisService.addUser(id);
+	public Company addCompany(@RequestBody Company company) {
+		return redisServiceAnno.saveUser(company);
 	}
 
 	@PostMapping("/get")
 	public Company getValue(String key) {
-		return redisService.getValue(key);
+		return redisServiceTemplate.getValue(key);
 	}
 
 	@PostMapping("/set")
 	public void setValue(@RequestParam String key, @RequestBody Company company) {
-		redisService.setValue(key, company);
+		redisServiceTemplate.setValue(key, company);
+	}
+
+	@PostMapping("/save")
+	public Company saveCompany(@RequestBody Company company) {
+		return redisServiceTemplate.saveUser(company);
+	}
+
+	@PostMapping("/getuser")
+	public Company getValue(@RequestParam Integer label) {
+		return redisServiceTemplate.getUser(label);
 	}
 }
