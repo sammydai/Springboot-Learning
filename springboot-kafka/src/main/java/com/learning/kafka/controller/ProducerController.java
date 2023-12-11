@@ -2,12 +2,11 @@ package com.learning.kafka.controller;
 
 import com.learning.kafka.domain.User;
 import com.learning.kafka.interceptor.ThreadPool;
+import com.learning.kafka.interceptor.ThreadPoolInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,15 +26,6 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class ProducerController {
 
-	/**
-	 * spring 提供的线程池
-	 */
-	@Autowired
-	private ThreadPoolTaskExecutor poolTaskExecutor;
-
-	@Autowired
-	private ApplicationContext applicationContext;
-
 	@Autowired
 	private HttpServletRequest request;
 
@@ -44,11 +34,13 @@ public class ProducerController {
 	@Autowired
 	private KafkaTemplate<String, User> kafkaTemplate;
 
+	// @Autowired
+	// private KafkaProducer kafkaProducer;
+
 	@RequestMapping("/test")
 	@ThreadPool("threadPoolB")
 	public String sendMessage(@RequestBody User user) {
 		System.out.println("==========>" + request.getRequestURL());
-		log.info("threadpoolname: {}", request.getAttribute("threadPoolName"));
 		ListenableFuture<SendResult<String, User>> future = kafkaTemplate.send(TOPIC, user);
 		future.addCallback(new ListenableFutureCallback<SendResult<String, User>>() {
 			@Override
@@ -68,13 +60,14 @@ public class ProducerController {
 	}
 
 	@RequestMapping("/abc")
-	@ThreadPool("threadPoolA")
+	@ThreadPool("threadA")
 	public void sendMessageSnd(@RequestBody User user) {
-		poolTaskExecutor.execute(() -> {
-			// log.info("threadpoolname: {}",request.getAttribute("threadPoolName"));
-			// log.info("request path{}",request.getRequestURL());
-			System.out.println("thread name: " + Thread.currentThread().getName());
-		});
+		for (int i = 0; i < 5; i++) {
+			ThreadPoolInterceptor.poolcontainer.get("threadA").execute(() -> {
+				log.info("aaaa>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+				System.out.println("thread name: " + Thread.currentThread().getName());
+			});
+		}
 	}
 
 }

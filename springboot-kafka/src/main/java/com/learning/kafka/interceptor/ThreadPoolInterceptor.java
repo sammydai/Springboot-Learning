@@ -5,6 +5,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -16,6 +18,8 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @createTime : [2023/10/18 16:19]
  */
 public class ThreadPoolInterceptor implements HandlerInterceptor {
+	public static Map<String, ThreadPoolExecutor> poolcontainer = new ConcurrentHashMap<>();
+
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		if (handler instanceof HandlerMethod) {
@@ -23,11 +27,10 @@ public class ThreadPoolInterceptor implements HandlerInterceptor {
 			ThreadPool threadPoolAnnotation = handlerMethod.getMethodAnnotation(ThreadPool.class);
 			if (threadPoolAnnotation != null) {
 				String threadPoolName = threadPoolAnnotation.value();
-				// 根据threadPoolName 选择特定的线程池
-				// 您可以将线程池名称存储在 request 中，以便在请求处理期间访问它
-				ThreadPoolExecutor threadPool = getThreadPoolByName(threadPoolName);
-				request.setAttribute("threadPoolName", threadPoolName);
-				request.setAttribute("threadPool", threadPool);
+				if (poolcontainer.get(threadPoolName) == null) {
+					ThreadPoolExecutor threadPool = getThreadPoolByName(threadPoolName);
+					poolcontainer.putIfAbsent(threadPoolName, threadPool);
+				}
 			}
 		}
 		return true;

@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * [一句话描述该类的功能]
+ * kafka验证
  *
  * @author : [Sammy]
  * @version : [v1.0]

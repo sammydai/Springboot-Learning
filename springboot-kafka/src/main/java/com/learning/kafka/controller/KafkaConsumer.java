@@ -6,7 +6,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 /**
- * [一句话描述该类的功能]
+ * KafkaConsumer
  *
  * @author : [Sammy]
  * @version : [v1.0]
@@ -21,5 +21,11 @@ public class KafkaConsumer {
 		log.info("receive a message from kafka");
 		System.out.println("Received Messasge in group - group-id: " + user);
 	}
+
+	// @KafkaListener(topics = "quickstart-events", groupId = "group-id")
+	// public void onMessage(User user,Conusmer conusmer) {
+	// 	log.info("receive a message from kafka");
+	// 	System.out.println("Received Messasge in group - group-id: " + user);
+	// }
 
 }
