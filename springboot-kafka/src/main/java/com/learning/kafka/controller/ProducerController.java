@@ -41,6 +41,7 @@ public class ProducerController {
 	@ThreadPool("threadPoolB")
 	public String sendMessage(@RequestBody User user) {
 		System.out.println("==========>" + request.getRequestURL());
+
 		ListenableFuture<SendResult<String, User>> future = kafkaTemplate.send(TOPIC, user);
 		future.addCallback(new ListenableFutureCallback<SendResult<String, User>>() {
 			@Override
