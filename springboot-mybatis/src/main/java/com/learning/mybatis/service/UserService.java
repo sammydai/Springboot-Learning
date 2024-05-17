@@ -5,6 +5,7 @@ import com.learning.mybatis.domain.DeptUserObject;
 import com.learning.mybatis.domain.QueryVO;
 import com.learning.mybatis.domain.User;
 import com.learning.mybatis.mapper.UserMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,7 @@ import java.util.List;
  * @Date: 2020/9/23 10:10
  */
 @Service
+@Slf4j
 public class UserService{
 
 	@Autowired
@@ -50,9 +52,38 @@ public class UserService{
 	}
 
 	public int insertUser() {
-		User user = new User("tomcat",22,"usa","it",new Date());
+		int i = 0;
+		User user = new User("tomcat", 22, "usa", "it", new Date());
+		try {
+			i = userMapper.insertUser(user);
+		} catch (Exception e) {
+			log.error("insert user错误,{}", e.getMessage());
+		}
+		return i;
+	}
+
+	public int insertUser(User user) {
 		int i = userMapper.insertUser(user);
 		return i;
+	}
+
+	public int insertUserList(List<User> list) {
+		int num = 0;
+		for (User user : list) {
+			num++;
+			try {
+				if (num == 3) {
+					int i = 1 / 0;
+				}
+				insertUser(user);
+				log.info("开始模拟延迟60s");
+				Thread.sleep(60000);
+				log.info("延迟模拟60s结束");
+			} catch (Exception e) {
+				log.error("批量处理第{}条数据出问题,{}", num, e);
+			}
+		}
+		return 1;
 	}
 
 	public List<User> getUserByName(QueryVO queryVO) {

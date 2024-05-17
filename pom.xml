@@ -45,6 +45,9 @@
         <module>spring-nio</module>
         <module>springboot-kafka</module>
         <module>springboot-starter</module>
+        <module>springboot-frame</module>
+        <module>springboot-sender</module>
+        <module>springboot-receiver</module>
     </modules>
 
     <properties>

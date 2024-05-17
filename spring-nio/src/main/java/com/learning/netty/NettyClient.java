@@ -31,6 +31,7 @@ public class NettyClient {
 						}
 					});
 			System.out.println("客户端准备好了……");
+			//连接到远程节点，阻塞等待直接连接完成
 			ChannelFuture channelFuture = bootstrap.connect("localhost", 6668).sync();
 			channelFuture.channel().closeFuture().sync();
 		} catch (InterruptedException e) {
