@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learning.logback.mapper.OrderMapper">
+    <!-- 读取待处理订单 -->
+    <select id="selectPendingOrders" resultType="com.learning.logback.entity.Order">
+        SELECT id, order_no, user_id, amount, actual_amount, status, create_time, update_time
+        FROM t_order
+        WHERE status = 'PENDING'
+        LIMIT 1000; <!-- 每次读取1000条，避免内存溢出 -->
+    </select>
+
+    <!-- 批量更新订单状态 -->
+    <update id="batchUpdateOrderStatus">
+        UPDATE t_order
+        SET status = CASE
+        <foreach collection="list" item="item" separator="">
+            WHEN id = #{item.id} THEN #{item.status}
+        </foreach>
+        END,
+        actual_amount = CASE
+        <foreach collection="list" item="item" separator="">
+            WHEN id = #{item.id} THEN #{item.actualAmount}
+        </foreach>
+        END
+        WHERE id IN
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+            #{item.id}
+        </foreach>
+    </update>
+
+    <!-- 批量插入订单历史 -->
+    <insert id="batchInsertOrderHistory">
+        INSERT INTO t_order_history (order_id, order_no, user_id, amount, actual_amount, status)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.orderId}, #{item.orderNo}, #{item.userId}, #{item.amount}, #{item.actualAmount}, #{item.status})
+        </foreach>
+    </insert>
+</mapper>

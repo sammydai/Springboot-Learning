@@ -1,0 +1,21 @@
+spring:
+  # 数据源配置
+  datasource:
+    username: root
+    password: kangta27
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/testjava?characterEncoding=UTF-8
+  # SpringBatch配置（禁用自动启动，手动/定时触发）
+  batch:
+    job:
+      enabled: true
+    initialize-schema: always
+    jdbc:
+      platform: mysql
+
+# MyBatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.learning.logback.entity
+  configuration:
+    map-underscore-to-camel-case: true # 下划线转驼峰
