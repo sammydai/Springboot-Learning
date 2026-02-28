@@ -10,7 +10,7 @@ import com.learning.ioc.annotation.Super;
  */
 
 @Super
-public class SuperUser {
+public class SuperUser extends User{
 	private String address;
 
 	public String getAddress() {
@@ -25,6 +25,6 @@ public class SuperUser {
 	public String toString() {
 		return "SuperUser{" +
 				"address='" + address + '\'' +
-				'}';
+				"} " + super.toString();
 	}
 }

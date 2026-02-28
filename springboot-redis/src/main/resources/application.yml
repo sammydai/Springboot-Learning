@@ -2,6 +2,12 @@ spring:
   redis:
     host: localhost
     port: 6379
+  # 数据源配置
+  datasource:
+    username: root
+    password: kangta27
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/testjava?characterEncoding=UTF-8
 # MyBatis配置
 mybatis:
   mapper-locations: classpath:mapper/*.xml

@@ -1,5 +1,7 @@
 package com.dwt.redis.service;
 
+import com.dwt.redis.dto.SeckillOrderDTO;
+
 public interface SeckillService {
     /**
      * 秒杀下单
@@ -15,4 +17,9 @@ public interface SeckillService {
      * @return 秒杀结果
      */
     String checkResult(Long orderId);
+
+    SeckillOrderDTO getOrderDetail(Long orderId);
+
+    void initStock(Long productId, Integer stock);
+
 }

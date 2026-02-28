@@ -1,12 +1,11 @@
-package com.dwt.redis.entity;
+package com.dwt.redis.dto;
 
 import lombok.Data;
-
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-public class SeckillOrder {
+public class SeckillOrderDTO {
     private Long id;
     private Long userId;
     private Long productId;

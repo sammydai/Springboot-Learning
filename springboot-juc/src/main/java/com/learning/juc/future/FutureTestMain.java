@@ -1,5 +1,9 @@
 package com.learning.juc.future;
 
+import com.google.common.util.concurrent.*;
+import lombok.extern.slf4j.Slf4j;
+import org.checkerframework.checker.nullness.qual.Nullable;
+
 import java.util.concurrent.*;
 
 /**
@@ -8,15 +12,47 @@ import java.util.concurrent.*;
  * @Author: Sammy
  * @Date: 2020/10/21 22:01
  */
-
-public class FuterTestMain {
+@Slf4j
+public class FutureTestMain {
 	public static void main(String[] args) throws ExecutionException, InterruptedException {
 		FutureTask<String> sft2 = new FutureTask<>(new T2Task());
-		FutureTask<String> sft1 = new FutureTask<>(new T1Task(sft2));
+		// FutureTask<String> sft1 = new FutureTask<>(new T1Task(sft2));
 		ExecutorService service = Executors.newFixedThreadPool(2);
-		service.submit(sft1);
-		service.submit(sft2);
-		System.out.println(sft1.get());
+		log.info("main thread start working....");
+		ListeningExecutorService lPool = MoreExecutors.listeningDecorator(service);
+		ListenableFuture<String> hFuture = lPool.submit(new T2Task());
+		Futures.addCallback(hFuture, new FutureCallback<String>() {
+			@Override
+			public void onSuccess(@Nullable String s) {
+				log.info("this is success: {}",s);
+			}
+
+			@Override
+			public void onFailure(Throwable throwable) {
+				log.info("have no tea");
+			}
+		}, lPool);
+		log.info("main thread finish working!!");
+
+		// service.submit(sft1);
+		// service.submit(sft2);
+		// System.out.println(sft1.get());
+	}
+
+	public static void methodA() throws ExecutionException, InterruptedException {
+		FutureTask<String> sft3 = new FutureTask<>(() -> {
+			log.info("do 1st thing");
+			log.info("do 2nd thing");
+			Thread.sleep(3000);
+			log.info("do 3rd thing");
+			return "all things done";
+		});
+		Thread aa = new Thread(sft3, "Thread-3");
+		aa.start();
+		log.info("start get future task result....");
+		String s = sft3.get();
+		log.info(s);
+		log.info("finish get future task result");
 	}
 }
 

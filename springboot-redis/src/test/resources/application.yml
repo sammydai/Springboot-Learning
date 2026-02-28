@@ -1,0 +1,40 @@
+spring:
+  # 数据源配置
+  datasource:
+    username: root
+    password: kangta27
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/testjava?characterEncoding=UTF-8
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 50
+      minIdle: 5
+      maxActive: 200
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: true
+      test-on-return: true
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      use-global-data-source-stat: true
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      filter:
+        config:
+          enabled: true
+      filters: conn,config,stat,slf4j
+  redis:
+    host: localhost
+    port: 6379
+#    lettuce:
+#      pool:
+#        max-active: 100
+#        max-idle: 20
+#        min-idle: 5
+# MyBatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
